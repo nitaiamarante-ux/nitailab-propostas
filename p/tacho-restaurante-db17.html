@@ -1468,10 +1468,12 @@
      ══════════════════════════════════════════════════════════ -->
 <script>
 (function(){
+  const urlParams = new URLSearchParams(window.location.search);
   const CFG = {
     endpoint: "https://nl-tracker.nitai-amarante.workers.dev/track",
     prospect: "db17",
     ref: "NL-2026-7263",
+    source: urlParams.get("src") || "direct",   // qr / wa / em / direct
     loadedAt: Date.now(),
   };
   if (!CFG.endpoint || CFG.endpoint.indexOf("{{") === 0) {
@@ -1496,6 +1498,7 @@
       prospect: CFG.prospect,
       ref: CFG.ref,
       sid: sid,
+      source: CFG.source,
       type: type,
       t: Date.now(),
       t_rel: Date.now() - CFG.loadedAt,
