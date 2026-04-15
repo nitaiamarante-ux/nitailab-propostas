@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="expires-at" content="2026-04-21">
+  <title>Pocket — Ótica do Seu Pedro · Nitai Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600;700&family=Urbanist:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ====================================================
+       Nitai Lab — Pocket A4 v2.0 · Brandbook 14/04/2026
+       ==================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 14mm;
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none !important; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-size: 11pt; background: #F5F0EB; color: #1C1C1A; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Outfit', sans-serif; font-weight: 300; }
+
+    :root {
+      --carvao:   #1C1C1A;
+      --cinza:    #5A5A55;
+      --offwhite: #F5F0EB;
+      --nude:     #E8DDD2;
+      --borda:    #D4C9BE;
+      --medio:    #9A9690;
+      --vermelho: #EA4335;
+      --amarelo:  #FFCC00;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 182mm;
+      margin: 0 auto;
+      background: var(--offwhite);
+    }
+
+    /* Cabeçalho */
+    .pocket-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid var(--borda);
+      padding-bottom: 9pt;
+      margin-bottom: 11pt;
+    }
+    .header-left { display: flex; align-items: center; gap: 8pt; }
+    .wordmark-main {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--carvao);
+      line-height: 1.15;
+    }
+    .wordmark-main .w-resgate { font-size: 14pt; }
+    .wordmark-main .w-resto   { font-size: 11pt; }
+    .wordmark-sub {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      font-size: 7pt;
+      letter-spacing: 0.1em;
+      color: var(--medio);
+      display: block;
+      margin-top: 1pt;
+    }
+    .header-meta {
+      text-align: right;
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 9pt;
+      color: var(--medio);
+      line-height: 1.5;
+    }
+
+    /* Label */
+    .label {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--vermelho);
+      display: block;
+      margin-bottom: 5pt;
+    }
+
+    /* Blocos */
+    .block { margin-bottom: 10pt; }
+
+    /* Bullets diagnóstico */
+    .block-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      font-size: 13pt;
+      color: var(--carvao);
+      margin-bottom: 7pt;
+      letter-spacing: 0.01em;
+    }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 4pt; }
+    .bullet-list li {
+      display: flex; align-items: flex-start; gap: 7pt;
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 11pt;
+      line-height: 1.5; color: var(--carvao);
+    }
+    .bullet-dot { flex-shrink: 0; width: 5pt; height: 5pt; border-radius: 50%; background: var(--vermelho); margin-top: 4pt; }
+    .bullet-list li strong { font-weight: 500; }
+
+    /* Tabelas */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Outfit', sans-serif;
+      margin: 6pt 0;
+    }
+    .data-table th {
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: 8pt;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--cinza);
+      border-bottom: 1.5px solid var(--borda); padding: 5pt 8pt; text-align: left;
+    }
+    .data-table td {
+      font-size: 10pt; font-weight: 300; color: var(--carvao);
+      border-bottom: 1px solid var(--borda); padding: 6pt 8pt;
+      vertical-align: top; line-height: 1.4;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table .col-metric { font-family: 'Urbanist', sans-serif; font-weight: 500; font-size: 9pt; color: var(--cinza); }
+
+    /* Planos */
+    .plans-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Outfit', sans-serif;
+      margin: 6pt 0;
+    }
+    .plans-table th {
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: 8pt;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--cinza);
+      border-bottom: 1.5px solid var(--borda); padding: 5pt 7pt; text-align: left;
+    }
+    .plans-table td {
+      font-size: 10pt; font-weight: 300; color: var(--carvao);
+      border-bottom: 1px solid var(--borda); padding: 6pt 7pt;
+      vertical-align: top; line-height: 1.4;
+    }
+    .plans-table tr.row-rec td { background: var(--nude); font-weight: 400; }
+    .plans-table .price-val {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 12pt;
+    }
+    .plans-table tr:last-child td { border-bottom: none; }
+
+    /* Garantia */
+    .garantia-box {
+      border: 1.5px solid var(--vermelho);
+      border-radius: 4pt;
+      padding: 9pt 12pt;
+      margin: 8pt 0;
+    }
+    .garantia-text {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 11pt;
+      color: var(--carvao); line-height: 1.5;
+    }
+    .garantia-text strong { font-weight: 500; color: var(--vermelho); }
+
+    /* Rodapé */
+    .pocket-footer {
+      display: flex;
+      align-items: flex-start;
+      gap: 14pt;
+      border-top: 1.5px solid var(--borda);
+      padding-top: 9pt;
+      margin-top: 9pt;
+    }
+    .qr-block { flex-shrink: 0; }
+    .qr-block img { width: 76pt; height: 76pt; display: block; }
+    .qr-label {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 10pt;
+      color: var(--cinza); line-height: 1.5; flex: 1;
+    }
+    .qr-expire {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 9pt;
+      color: var(--vermelho); margin-top: 3pt;
+    }
+    .pocket-brand {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 7pt;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--medio);
+    }
+    .pocket-contact {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 9pt;
+      color: var(--cinza); margin-top: 2pt;
+    }
+
+    hr { border: none; border-top: 1px solid var(--borda); margin: 8pt 0; }
+
+    .print-cta {
+      display: block; margin: 18px auto; padding: 11px 22px;
+      background: #1C1C1A; color: #F5F0EB;
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 13px;
+      border: none; border-radius: 4px; cursor: pointer; text-align: center; max-width: 220px;
+    }
+    @media print { .print-cta { display: none !important; } }
+  </style>
+</head>
+<body>
+
+<button class="print-cta no-print" onclick="window.print()">Imprimir / Salvar PDF</button>
+
+<div class="page">
+
+  <!-- CABEÇALHO -->
+  <div class="pocket-header">
+    <div class="header-left">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="22" viewBox="0 0 24 34" fill="none" aria-hidden="true">
+        <path d="M12 0C5.373 0 0 5.373 0 12C0 22 12 34 12 34C12 34 24 22 24 12C24 5.373 18.627 0 12 0Z" fill="#EA4335"/>
+        <circle cx="12" cy="12" r="5.5" fill="white"/>
+        <text x="12" y="15.5" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-weight="700" font-size="5.5" fill="#EA4335">1º</text>
+      </svg>
+      <div>
+        <div class="wordmark-main">
+          <span class="w-resgate">RESGATE</span> <span class="w-resto">SEU GOOGLE</span>
+        </div>
+        <span class="wordmark-sub">Diagnóstico e Proposta · por Nitai Lab</span>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div>Ótica do Seu Pedro</div>
+      <div>Pará de Minas · 14/04/2026</div>
+    </div>
+  </div>
+
+  <!-- BLOCO 1: DIAGNÓSTICO -->
+  <div class="block">
+    <span class="label">O que achei no seu Google</span>
+    <div class="block-title">Ótica do Seu Pedro está em 11º lugar.</div>
+    <ul class="bullet-list">
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Posição:</strong> você aparece em 11º pra "ótica em Pará de Minas". Óticas Visão Clara tá em 1º, com 214 avaliações respondidas.</span>
+      </li>
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Avaliações:</strong> 18 avaliações, 12 sem resposta e 2 negativa(s) aparecendo antes do cliente decidir te ligar.</span>
+      </li>
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Movimento:</strong> último post em novembro de 2024. Perfil parado — o Google entende como menos relevante e mostra menos.</span>
+      </li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <!-- BLOCO 2: COMPARATIVO -->
+  <div class="block">
+    <span class="label">Comparativo com a concorrência</span>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Métrica</th>
+          <th>Ótica do Seu Pedro</th>
+          <th>Óticas Visão Clara (1º)</th>
+          <th>Ótica Dourada (2º)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-metric">Posição</td>
+          <td>11º</td>
+          <td>1º</td>
+          <td>2º</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Avaliações</td>
+          <td>18</td>
+          <td>214</td>
+          <td>91</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Nota</td>
+          <td>3.5</td>
+          <td>4.8</td>
+          <td>4.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- BLOCO 3: PLANOS -->
+  <div class="block">
+    <span class="label">Os três planos</span>
+    <table class="plans-table">
+      <thead>
+        <tr>
+          <th>Plano</th>
+          <th>Setup</th>
+          <th>Mensalidade</th>
+          <th>3 entregas principais</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A — Essencial</td>
+          <td>R$ 497</td>
+          <td>R$ 397</td>
+          <td>Auditoria 42 pts · 1 post/sem · Métricas básicas</td>
+        </tr>
+        <tr class="row-rec">
+          <td><strong>B — Profissional</strong></td>
+          <td class="price-val">R$ 697</td>
+          <td class="price-val">R$ 497</td>
+          <td>2 posts/sem · Monitor 3 concorrentes · 15 métricas</td>
+        </tr>
+        <tr>
+          <td>C — Performance</td>
+          <td>R$ 997</td>
+          <td>R$ 797</td>
+          <td>3 posts/sem · Heatmap + GEO (IA) · Dashboard receita</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- BLOCO 4: GARANTIA -->
+  <div class="block">
+    <div class="garantia-box">
+      <p class="garantia-text">
+        <strong>Garantia 120 dias:</strong> se o perfil não subir 5+ posições, ou tiver 40%+ mais visibilidade, ou 30%+ mais ações — devolvo tudo. Basta uma mensagem no dia 121.
+      </p>
+    </div>
+  </div>
+
+  <!-- RODAPÉ COM QR -->
+  <div class="pocket-footer">
+    <div class="qr-block">
+      <img src="../qr-otica-do-seu-pedro-5273.png" alt="QR Code — diagnóstico completo">
+    </div>
+    <div style="flex:1;">
+      <div class="qr-label">Diagnóstico completo no QR.</div>
+      <div class="qr-expire">Expira em 21/04/2026</div>
+      <div style="margin-top:7pt;">
+        <div class="pocket-brand">Nitai Lab</div>
+        <div class="pocket-contact">Nitai Morais · WhatsApp (31) 99999-9999 · nitailab.com.br</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+/* ====================================================
+   Nitai Lab — Resgate seu Google v1.0
+   Brandbook oficial 14/04/2026
+   ==================================================== */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600;700&family=Urbanist:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap');
+
+/* --- Reset --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; font-weight: 300; color: #1C1C1A; background: #F5F0EB; -webkit-font-smoothing: antialiased; }
+
+/* --- Paleta --- */
+:root {
+  --carvao:    #1C1C1A;
+  --grafite:   #2E2E2B;
+  --midnight:  #0F1318;
+  --cinza:     #5A5A55;
+  --offwhite:  #F5F0EB;
+  --nude:      #E8DDD2;
+  --borda:     #D4C9BE;
+  --medio:     #9A9690;
+  --vermelho:  #EA4335;
+  --amarelo:   #FFCC00;
+  --azul:      #4285F4;
+}
+
+/* --- Tipografia base --- */
+h1, h2, h3, .display { font-family: 'IBM Plex Sans', sans-serif; }
+.label-tag, .urbanist { font-family: 'Urbanist', sans-serif; }
+
+/* --- Seção: utilitários --- */
+.section { padding: 72px 24px; }
+.section--dark  { background: var(--carvao);   color: var(--offwhite); }
+.section--mid   { background: var(--grafite);  color: var(--offwhite); }
+.section--night { background: var(--midnight); color: var(--offwhite); }
+.section--light { background: var(--offwhite); color: var(--carvao); }
+.section--nude  { background: var(--nude);     color: var(--carvao); }
+
+.inner { max-width: 720px; margin: 0 auto; }
+.inner--wide { max-width: 960px; margin: 0 auto; }
+
+/* --- Label / Tag --- */
+.label {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--vermelho);
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* --- Headlines --- */
+.display {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: clamp(36px, 5vw, 48px);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+.h1 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 36px);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.h2 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3vw, 24px);
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+.h3 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.3;
+}
+.body-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--carvao);
+}
+.body-text--light {
+  color: var(--cinza);
+}
+.body-text--dark {
+  color: #c9b8a8;
+}
+.body-text--sm {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.italic { font-style: italic; }
+
+/* --- Número destaque --- */
+.num-big {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(48px, 8vw, 80px);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--amarelo);
+}
+
+/* --- Pino SVG (inline helper) --- */
+.pino { display: inline-block; flex-shrink: 0; }
+
+/* --- Wordmark --- */
+.wordmark-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.wordmark-text { line-height: 1; }
+.wordmark-main {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--offwhite);
+  display: block;
+}
+.wordmark-main .w-resgate { font-size: 28px; }
+.wordmark-main .w-resto   { font-size: 22px; }
+.wordmark-sub {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--medio);
+  text-transform: none;
+  display: block;
+  margin-top: 4px;
+}
+
+/* --- Assinatura institucional --- */
+.assinatura-nitai {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* --- Bullet pino mini --- */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--carvao);
+}
+.bullet-list--dark li { color: #c9b8a8; }
+.bullet-list li .bullet-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vermelho);
+  margin-top: 7px;
+}
+.bullet-list li strong {
+  font-weight: 500;
+  color: var(--carvao);
+}
+.bullet-list--dark li strong { color: var(--offwhite); }
+
+/* --- Mock Google Maps --- */
+.maps-mock {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  max-width: 560px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+.maps-mock__bar {
+  background: #f8f8f8;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: #5a5a55;
+}
+.maps-mock__bar-icon { color: var(--azul); font-size: 14px; }
+.maps-mock__result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0ece8;
+}
+.maps-mock__result:last-child { border-bottom: none; }
+.maps-mock__result--cliente {
+  background: #FFFAE5;
+}
+.maps-mock__result-info { flex: 1; }
+.maps-mock__result-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--carvao);
+}
+.maps-mock__result-rating {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  color: var(--cinza);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+.maps-mock__gap {
+  padding: 8px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--medio);
+  font-style: italic;
+  border-bottom: 1px solid #f0ece8;
+}
+.badge-voce {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--carvao);
+  color: var(--offwhite);
+  padding: 4px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* --- Cards de planos --- */
+.plans-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-top: 32px;
+}
+@media (max-width: 768px) {
+  .plans-grid { grid-template-columns: 1fr; }
+}
+.plan-card {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 28px;
+  position: relative;
+}
+.plan-card--recommended {
+  border: 2px solid var(--vermelho);
+  transform: scale(1.04);
+}
+.plan-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--amarelo);
+  color: var(--carvao);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 6px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.plan-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.plan-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--carvao);
+}
+.plan-badge-label {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--medio);
+  background: #f0ece8;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+.plan-divider { border: none; border-top: 1px solid var(--borda); margin: 16px 0; }
+.plan-price-wrap { margin-bottom: 4px; }
+.plan-price {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--carvao);
+  line-height: 1;
+}
+.plan-price-unit {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--cinza);
+}
+.plan-setup {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--cinza);
+  margin-bottom: 16px;
+}
+.plan-cliente-tipo {
+  background: var(--offwhite);
+  border-left: 3px solid var(--vermelho);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--cinza);
+  line-height: 1.5;
+}
+.plan-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.plan-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--cinza);
+  line-height: 1.5;
+}
+.plan-list li .plan-bullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--vermelho);
+  margin-top: 6px;
+}
+.plan-cta {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  text-align: center;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--offwhite);
+  background: var(--carvao);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.plan-cta--red { background: var(--vermelho); }
+.plan-cta:hover { filter: brightness(0.88); }
+
+/* --- Passos / CTA final --- */
+.steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; max-width: 600px; margin: 0 auto; }
+.step-item { display: flex; align-items: flex-start; gap: 20px; }
+.step-num {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--amarelo);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 44px;
+  text-align: right;
+}
+.step-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #e8d8c4;
+  line-height: 1.6;
+  padding-top: 6px;
+}
+.step-text strong { color: var(--offwhite); font-weight: 400; }
+
+.btn-cta {
+  display: inline-block;
+  padding: 18px 32px;
+  background: var(--vermelho);
+  color: var(--offwhite);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.btn-cta:hover { filter: brightness(0.88); }
+
+/* --- Garantia números --- */
+.garantia-items { display: flex; flex-direction: column; gap: 20px; max-width: 520px; margin: 32px auto 0; }
+.garantia-item { display: flex; align-items: flex-start; gap: 20px; }
+.garantia-num {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--amarelo);
+  flex-shrink: 0;
+  width: 32px;
+  text-align: right;
+}
+.garantia-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #c9b8a8;
+  line-height: 1.6;
+  padding-top: 2px;
+}
+.garantia-text strong { color: var(--offwhite); font-weight: 400; }
+
+/* --- Prova --- */
+.proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+@media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } }
+.proof-img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 8px;
+  border: 1px solid var(--borda);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.proof-num-big {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  color: var(--amarelo);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.proof-num-label {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--carvao);
+  margin-bottom: 16px;
+}
+.proof-quote {
+  border-left: 3px solid var(--vermelho);
+  padding: 12px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--carvao);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.proof-author {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--cinza);
+}
+
+/* --- FAQ --- */
+.faq-list { display: flex; flex-direction: column; gap: 20px; }
+.faq-item {}
+.faq-q {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--carvao);
+  margin-bottom: 6px;
+}
+.faq-a {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--cinza);
+  line-height: 1.6;
+}
+
+/* --- Pagamento --- */
+.pay-list { display: flex; flex-direction: column; gap: 18px; }
+.pay-item {}
+.pay-label {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vermelho);
+  margin-bottom: 4px;
+}
+.pay-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--carvao);
+  line-height: 1.6;
+}
+
+/* --- Rodapé --- */
+.footer {
+  padding: 40px 24px 32px;
+  background: var(--offwhite);
+  border-top: 1px solid var(--borda);
+  text-align: center;
+}
+.footer-hr { border: none; border-top: 1px solid var(--borda); margin: 20px auto; max-width: 400px; }
+.footer-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--carvao);
+  margin-bottom: 4px;
+}
+.footer-sub {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--cinza);
+  margin-bottom: 4px;
+}
+.footer-contact {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--cinza);
+  margin-bottom: 20px;
+}
+.footer-brand {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--medio);
+  margin-bottom: 6px;
+}
+.footer-legal {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  color: var(--medio);
+}

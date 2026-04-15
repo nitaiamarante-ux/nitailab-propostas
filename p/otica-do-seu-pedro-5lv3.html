@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="expires-at" content="2026-04-21">
+  <title>Proposta — Ótica do Seu Pedro · Nitai Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600;700&family=Urbanist:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ====================================================
+       Nitai Lab — Resgate seu Google v1.0 · Brandbook 14/04/2026
+       ==================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; font-weight: 300; color: #1C1C1A; background: #F5F0EB; -webkit-font-smoothing: antialiased; }
+    :root {
+      --carvao:   #1C1C1A;
+      --grafite:  #2E2E2B;
+      --midnight: #0F1318;
+      --cinza:    #5A5A55;
+      --offwhite: #F5F0EB;
+      --nude:     #E8DDD2;
+      --borda:    #D4C9BE;
+      --medio:    #9A9690;
+      --vermelho: #EA4335;
+      --amarelo:  #FFCC00;
+      --azul:     #4285F4;
+    }
+
+    /* Seção */
+    .section { padding: 72px 24px; }
+    .section--dark  { background: var(--carvao);   color: var(--offwhite); }
+    .section--night { background: var(--midnight); color: var(--offwhite); }
+    .section--light { background: var(--offwhite); color: var(--carvao); }
+    .section--nude  { background: var(--nude);     color: var(--carvao); }
+    .inner      { max-width: 720px; margin: 0 auto; }
+    .inner--wide{ max-width: 960px; margin: 0 auto; }
+
+    /* Tipografia */
+    .label {
+      font-family: 'Urbanist', sans-serif; font-weight: 400; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.14em; color: var(--vermelho);
+      display: block; margin-bottom: 12px;
+    }
+    .h1 {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;
+      font-size: clamp(28px, 4vw, 36px); letter-spacing: 0.01em; line-height: 1.2;
+    }
+    .h2 {
+      font-family: 'Urbanist', sans-serif; font-weight: 700;
+      font-size: clamp(20px, 3vw, 24px); letter-spacing: 0; line-height: 1.25; margin-bottom: 24px;
+    }
+    .h2--ibm {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;
+      font-size: clamp(24px, 3.5vw, 32px); line-height: 1.2; margin-bottom: 24px;
+    }
+    .body-text { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.7; }
+    .body-text--lg { font-size: 16px; }
+    .body-text--sm { font-size: 13px; line-height: 1.6; }
+    .body-text--cinza { color: var(--cinza); }
+    .body-text--dark  { color: #c9b8a8; }
+    .body-text--medio { color: var(--medio); }
+    .italic { font-style: italic; }
+
+    /* Número destaque */
+    .num-big {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 700;
+      font-size: clamp(48px, 8vw, 80px); letter-spacing: -0.01em; line-height: 1;
+      color: var(--amarelo);
+    }
+
+    /* Wordmark */
+    .wordmark-wrap { display: flex; align-items: center; gap: 16px; }
+    .wordmark-main {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase; color: var(--offwhite);
+      display: block; line-height: 1.1;
+    }
+    .wordmark-main .w-resgate { font-size: 28px; }
+    .wordmark-main .w-resto   { font-size: 22px; }
+    .wordmark-sub {
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 11px;
+      letter-spacing: 0.14em; color: var(--medio); display: block; margin-top: 5px;
+    }
+
+    /* Bullet list */
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .bullet-list li { display: flex; align-items: flex-start; gap: 10px; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.6; }
+    .bullet-list--dark li { color: #c9b8a8; }
+    .bullet-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--vermelho); margin-top: 7px; }
+    .bullet-list li strong { font-weight: 500; }
+
+    /* Mock Maps */
+    .maps-mock { background: #fff; border: 1px solid var(--borda); border-radius: 8px; max-width: 560px; overflow: hidden; margin: 24px 0; }
+    .maps-mock__bar { background: #f8f8f8; border-bottom: 1px solid #e8e8e8; padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-family: 'Outfit', sans-serif; font-size: 13px; color: #5a5a55; }
+    .maps-mock__result { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid #f0ece8; }
+    .maps-mock__result:last-child { border-bottom: none; }
+    .maps-mock__result--cliente { background: #FFFAE5; }
+    .maps-mock__result-info { flex: 1; }
+    .maps-mock__result-name { font-family: 'Outfit', sans-serif; font-weight: 500; font-size: 14px; color: var(--carvao); }
+    .maps-mock__result-rating { font-family: 'Outfit', sans-serif; font-size: 12px; color: var(--cinza); display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+    .maps-mock__gap { padding: 8px 14px; font-family: 'Outfit', sans-serif; font-size: 13px; color: var(--medio); font-style: italic; border-bottom: 1px solid #f0ece8; }
+    .badge-voce { font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; background: var(--carvao); color: var(--offwhite); padding: 4px 8px; border-radius: 3px; white-space: nowrap; }
+
+    /* Cards planos */
+    .plans-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; margin-top: 32px; }
+    @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } }
+    .plan-card { background: #fff; border: 1px solid var(--borda); border-radius: 10px; padding: 28px; position: relative; }
+    .plan-card--recommended { border: 2px solid var(--vermelho); transform: scale(1.04); }
+    .plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--amarelo); color: var(--carvao); font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; padding: 6px 16px; border-radius: 20px; white-space: nowrap; }
+    .plan-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+    .plan-name { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 18px; color: var(--carvao); }
+    .plan-tag { font-family: 'Urbanist', sans-serif; font-weight: 400; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--medio); background: #f0ece8; padding: 3px 8px; border-radius: 3px; }
+    .plan-divider { border: none; border-top: 1px solid var(--borda); margin: 16px 0; }
+    .plan-price { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 40px; color: var(--carvao); line-height: 1; }
+    .plan-price-unit { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 20px; color: var(--cinza); }
+    .plan-setup { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 13px; color: var(--cinza); margin-top: 4px; margin-bottom: 16px; }
+    .plan-cliente { background: var(--offwhite); border-left: 3px solid var(--vermelho); padding: 12px 14px; margin-bottom: 16px; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 13px; font-style: italic; color: var(--cinza); line-height: 1.5; }
+    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .plan-list li { display: flex; align-items: flex-start; gap: 8px; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 13px; color: var(--cinza); line-height: 1.5; }
+    .plan-bullet { flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--vermelho); margin-top: 5px; }
+    .plan-cta { display: block; width: 100%; padding: 14px; text-align: center; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; color: var(--offwhite); background: var(--carvao); border: none; border-radius: 6px; cursor: pointer; text-decoration: none; transition: filter 0.2s; }
+    .plan-cta--red { background: var(--vermelho); }
+    .plan-cta:hover { filter: brightness(0.85); }
+
+    /* Garantia */
+    .garantia-items { display: flex; flex-direction: column; gap: 20px; max-width: 520px; margin: 32px auto 0; }
+    .garantia-item { display: flex; align-items: flex-start; gap: 20px; }
+    .garantia-num { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 28px; color: var(--amarelo); flex-shrink: 0; width: 32px; text-align: right; }
+    .garantia-text { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 15px; color: #c9b8a8; line-height: 1.6; padding-top: 2px; }
+    .garantia-text strong { color: var(--offwhite); font-weight: 400; }
+
+    /* Prova */
+    .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } }
+    .proof-img { width: 100%; max-width: 320px; border-radius: 8px; border: 1px solid var(--borda); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .proof-num-big { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 56px; color: var(--amarelo); line-height: 1; margin-bottom: 4px; }
+    .proof-num-label { font-family: 'Urbanist', sans-serif; font-weight: 500; font-size: 14px; color: var(--carvao); margin-bottom: 16px; }
+    .proof-quote { border-left: 3px solid var(--vermelho); padding: 12px 16px; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 17px; font-style: italic; color: var(--carvao); line-height: 1.5; margin-bottom: 12px; }
+    .proof-author { font-family: 'Urbanist', sans-serif; font-weight: 400; font-size: 12px; color: var(--cinza); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 20px; }
+    .faq-q { font-family: 'Urbanist', sans-serif; font-weight: 500; font-size: 15px; color: var(--carvao); margin-bottom: 6px; }
+    .faq-a { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 14px; color: var(--cinza); line-height: 1.6; }
+
+    /* Pagamento */
+    .pay-list { display: flex; flex-direction: column; gap: 18px; }
+    .pay-label { font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--vermelho); margin-bottom: 4px; }
+    .pay-text { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 15px; color: var(--carvao); line-height: 1.6; }
+
+    /* Passos */
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 28px; max-width: 600px; margin: 32px auto 0; }
+    .step-item { display: flex; align-items: flex-start; gap: 20px; }
+    .step-num { font-family: 'IBM Plex Sans', sans-serif; font-weight: 700; font-size: 36px; color: var(--amarelo); line-height: 1; flex-shrink: 0; width: 44px; text-align: right; }
+    .step-text { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px; color: #e8d8c4; line-height: 1.6; padding-top: 6px; }
+    .step-text strong { color: var(--offwhite); font-weight: 400; }
+
+    /* CTA botão */
+    .btn-cta { display: inline-block; padding: 18px 32px; background: var(--vermelho); color: var(--offwhite); font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 16px; letter-spacing: 0.02em; border-radius: 6px; text-decoration: none; transition: filter 0.2s; text-align: center; }
+    .btn-cta:hover { filter: brightness(0.88); }
+
+    /* Sub-blocos */
+    .sub-label { font-family: 'Urbanist', sans-serif; font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--vermelho); margin-bottom: 8px; margin-top: 28px; }
+    .sub-label:first-child { margin-top: 0; }
+
+    /* Rodapé */
+    .footer { padding: 40px 24px 32px; background: var(--offwhite); border-top: 1px solid var(--borda); text-align: center; }
+    .footer-hr { border: none; border-top: 1px solid var(--borda); margin: 20px auto; max-width: 400px; }
+    .footer-name { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 18px; color: var(--carvao); margin-bottom: 4px; }
+    .footer-sub { font-family: 'Urbanist', sans-serif; font-weight: 400; font-size: 13px; color: var(--cinza); margin-bottom: 4px; }
+    .footer-contact { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 13px; color: var(--cinza); margin-bottom: 20px; }
+    .footer-brand { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--medio); margin-bottom: 6px; }
+    .footer-legal { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 11px; color: var(--medio); }
+
+    /* Utilitários */
+    .text-center { text-align: center; }
+    .mt-8  { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+    .mt-48 { margin-top: 48px; }
+    .flex-center { display: flex; justify-content: center; }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+     SEÇÃO 1 — CAPA
+     ===================================================== -->
+<section class="section section--dark" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 32px 24px 32px;">
+
+  <!-- Assinatura mini topo -->
+  <div>
+    <span class="assinatura-nitai" style="font-family:'IBM Plex Sans',sans-serif;font-weight:300;font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:var(--offwhite);">Nitai Lab</span>
+  </div>
+
+  <!-- Centro da capa -->
+  <div class="text-center" style="padding: 48px 0;">
+
+    <!-- Wordmark -->
+    <div class="wordmark-wrap" style="justify-content: center; margin-bottom: 48px;">
+      <!-- Pino SVG 80px -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="72" viewBox="0 0 48 72" fill="none" aria-label="Pino Resgate seu Google">
+        <path d="M24 0C10.745 0 0 10.745 0 24C0 42 24 72 24 72C24 72 48 42 48 24C48 10.745 37.255 0 24 0Z" fill="#EA4335"/>
+        <circle cx="24" cy="24" r="11" fill="white"/>
+        <text x="24" y="28" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-weight="700" font-size="11" fill="#EA4335">1º</text>
+      </svg>
+      <div>
+        <span class="wordmark-main">
+          <span class="w-resgate">RESGATE</span> <span class="w-resto">SEU GOOGLE</span>
+        </span>
+        <span class="wordmark-sub">por Nitai Lab</span>
+      </div>
+    </div>
+
+    <!-- Identidade da proposta -->
+    <span class="label" style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--vermelho);display:block;margin-bottom:16px;">Diagnóstico e Proposta</span>
+
+    <div class="h1 display" style="font-family:'IBM Plex Sans',sans-serif;font-weight:500;font-size:clamp(36px,5vw,48px);letter-spacing:0.01em;color:var(--offwhite);max-width:680px;margin:0 auto 16px;">
+      Ótica do Seu Pedro
+    </div>
+
+    <p class="body-text" style="color:var(--offwhite);font-size:15px;margin-bottom:12px;">
+      Preparada pessoalmente por Nitai Morais para Ótica do Seu Pedro
+    </p>
+    <p style="font-family:'Urbanist',sans-serif;font-weight:400;font-size:12px;color:var(--medio);letter-spacing:0.02em;">
+      Pará de Minas &nbsp;·&nbsp; 14/04/2026
+    </p>
+
+  </div>
+
+  <!-- Rodapé da capa -->
+  <div class="text-center">
+    <p style="font-family:'Outfit',sans-serif;font-weight:300;font-size:13px;color:var(--vermelho);">
+      Esta proposta expira em 21/04/2026 (daqui a 7 dias)
+    </p>
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 2 — DIAGNÓSTICO
+     ===================================================== -->
+<section class="section section--light">
+  <div class="inner">
+
+    <span class="label">O que achei no seu Google</span>
+    <div class="h2">Seu perfil tá aí. Mas quem tá procurando não te acha.</div>
+
+    <p class="body-text body-text--lg" style="margin-bottom: 20px;">
+      Olhei seu perfil no Google e comparei com os três concorrentes mais próximos aqui em Pará de Minas. O resumo em 30 segundos:
+    </p>
+
+    <!-- Mini-mock Google Maps -->
+    <div class="maps-mock">
+      <!-- Barra de busca simulada -->
+      <div class="maps-mock__bar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;">
+          <circle cx="5.8" cy="5.8" r="4.3" stroke="#4285F4" stroke-width="1.5"/>
+          <line x1="9" y1="9" x2="13" y2="13" stroke="#4285F4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>ótica em Pará de Minas em Pará de Minas</span>
+        <span style="margin-left:auto;color:var(--medio);font-size:12px;">✕</span>
+      </div>
+
+      <!-- Resultado 1 - concorrente -->
+      <div class="maps-mock__result">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="38" viewBox="0 0 28 38" fill="none" style="flex-shrink:0;">
+          <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#EA4335"/>
+          <circle cx="14" cy="14" r="7" fill="white"/>
+          <text x="14" y="17.5" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="8" fill="#EA4335">1</text>
+        </svg>
+        <div class="maps-mock__result-info">
+          <div class="maps-mock__result-name">Óticas Visão Clara</div>
+          <div class="maps-mock__result-rating">
+            <svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#FFCC00"/></svg>
+            <span>4.8</span>
+            <span style="color:var(--medio);">(234 avaliações)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resultado 2 - outro concorrente -->
+      <div class="maps-mock__result">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="38" viewBox="0 0 28 38" fill="none" style="flex-shrink:0;">
+          <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#EA4335"/>
+          <circle cx="14" cy="14" r="7" fill="white"/>
+          <text x="14" y="17.5" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="8" fill="#EA4335">2</text>
+        </svg>
+        <div class="maps-mock__result-info">
+          <div class="maps-mock__result-name">Outro concorrente local</div>
+          <div class="maps-mock__result-rating">
+            <svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#FFCC00"/></svg>
+            <span>4.5</span>
+            <span style="color:var(--medio);">(87 avaliações)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gap visual -->
+      <div class="maps-mock__gap">· · · (mais 10 negócios aparecem antes de você)</div>
+
+      <!-- Resultado cliente — pino cinza -->
+      <div class="maps-mock__result maps-mock__result--cliente">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="38" viewBox="0 0 28 38" fill="none" style="flex-shrink:0;">
+          <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#A8A29E"/>
+          <circle cx="14" cy="14" r="7" fill="white"/>
+          <text x="14" y="17.5" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="7" fill="#A8A29E">11º</text>
+        </svg>
+        <div class="maps-mock__result-info">
+          <div class="maps-mock__result-name">Ótica do Seu Pedro</div>
+          <div class="maps-mock__result-rating">
+            <svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#C5BDB8"/></svg>
+            <span style="color:var(--medio);">3.5</span>
+            <span style="color:var(--medio);">(18 avaliações)</span>
+          </div>
+        </div>
+        <span class="badge-voce">Você está aqui</span>
+      </div>
+    </div>
+
+    <p class="body-text body-text--sm italic" style="color:var(--cinza);margin-bottom:32px;">
+      Enquanto seu perfil tá parado, quem aparece em 1º recebe o pessoal que tá procurando.
+    </p>
+
+    <!-- 5 bullets do diagnóstico -->
+    <ul class="bullet-list">
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Posição:</strong> você tá em 11º quando o pessoal busca "ótica em Pará de Minas" aqui em Centro. Óticas Visão Clara tá em 1º.</span>
+      </li>
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Estrelinhas:</strong> 18 avaliações, 12 sem resposta, 2 negativa(s) aparecendo antes do freguês decidir te ligar.</span>
+      </li>
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Fotos:</strong> 4 fotos, última em setembro de 2024. Seu concorrente direto postou 22 só no mês passado.</span>
+      </li>
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Informação desencontrada:</strong> Horário no Google diferente do horário no Instagram. Confunde o Google e confunde o cliente.</span>
+      </li>
+      <li>
+        <span class="bullet-dot"></span>
+        <span><strong>Movimento:</strong> última postagem em novembro de 2024. O Google entende perfil parado como menos relevante e deixa de mostrar.</span>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 3 — IMPACTO
+     ===================================================== -->
+<section class="section section--dark" style="padding: 80px 24px; text-align: center;">
+  <div class="inner">
+
+    <span class="label" style="color:var(--vermelho);">O que tá escapando do seu caixa</span>
+    <div class="h2" style="font-family:'Urbanist',sans-serif;font-weight:700;font-size:clamp(22px,3.5vw,28px);color:var(--offwhite);margin-bottom:24px;">
+      Quanto movimento tá indo pro concorrente
+    </div>
+
+    <p class="body-text body-text--lg body-text--dark" style="max-width: 560px; margin: 0 auto 36px;">
+      Um cliente novo do seu negócio vale, em média, <strong style="color:var(--offwhite);">R$ 320</strong> na primeira compra. Se volta, chega a valer <strong style="color:var(--offwhite);">R$ 1.800</strong> no tempo. Com os 10 que aparecem antes de você:
+    </p>
+
+    <div class="num-big">R$ 7.800/mês</div>
+
+    <p class="body-text body-text--sm" style="color:var(--medio);margin-top:12px;">
+      Estimativa de quanto tá indo pro concorrente que aparece em 1º. Conta simples, sem inflar.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 4 — O QUE FAZEMOS
+     ===================================================== -->
+<section class="section section--light">
+  <div class="inner">
+
+    <span class="label">O que fazemos</span>
+    <div class="h2">Como a gente arruma</div>
+
+    <!-- Ficha técnica -->
+    <div class="sub-label">Ficha técnica</div>
+    <ul class="bullet-list">
+      <li><span class="bullet-dot"></span><span>Conferência e correção de todas as informações (nome, endereço, telefone, horário)</span></li>
+      <li><span class="bullet-dot"></span><span>Categoria certinha — o item que mais pesa pro Google te mostrar</span></li>
+      <li><span class="bullet-dot"></span><span>Atributos, horários especiais, feriados, serviços</span></li>
+      <li><span class="bullet-dot"></span><span>Descrição reescrita com as palavras que o pessoal usa pra te procurar</span></li>
+    </ul>
+
+    <!-- Conteúdo vivo -->
+    <div class="sub-label">Conteúdo vivo</div>
+    <ul class="bullet-list">
+      <li><span class="bullet-dot"></span><span>Posts semanais no perfil</span></li>
+      <li><span class="bullet-dot"></span><span>Fotos novas todo mês, nomeadas com palavra-chave e cidade</span></li>
+      <li><span class="bullet-dot"></span><span>Cardápio, produtos e serviços atualizados</span></li>
+    </ul>
+
+    <!-- Reputação -->
+    <div class="sub-label">Reputação</div>
+    <ul class="bullet-list">
+      <li><span class="bullet-dot"></span><span>Resposta em até 48h pra toda avaliação que entra</span></li>
+      <li><span class="bullet-dot"></span><span>Perguntas e Respostas (Q&amp;A) montadas e mantidas</span></li>
+      <li><span class="bullet-dot"></span><span>A gente pede estrelinha pro cliente certo, na hora certa — sem encher ninguém de mensagem</span></li>
+    </ul>
+
+    <!-- Relatório -->
+    <div class="sub-label">Relatório todo mês</div>
+    <ul class="bullet-list">
+      <li><span class="bullet-dot"></span><span>Quantos ligaram pelo perfil</span></li>
+      <li><span class="bullet-dot"></span><span>Quantos pediram como chegar até você</span></li>
+      <li><span class="bullet-dot"></span><span>Quantos entraram no seu site vindo do Maps</span></li>
+      <li><span class="bullet-dot"></span><span>Quais palavras te mostraram no Google</span></li>
+      <li><span class="bullet-dot"></span><span>Comparativo com 3 concorrentes</span></li>
+    </ul>
+
+    <p class="body-text body-text--sm italic" style="color:var(--cinza);margin-top:28px;">
+      Você não paga por post. Paga pra aparecer primeiro quando alguém procurar ótica aqui em Pará de Minas.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 5 — OS TRÊS PLANOS
+     ===================================================== -->
+<section class="section section--nude">
+  <div class="inner--wide">
+
+    <span class="label" style="text-align:center;display:block;">Os três planos</span>
+    <div class="h2" style="text-align:center;">Escolhe o seu jeito</div>
+
+    <div class="plans-grid">
+
+      <!-- ESSENCIAL -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="20" viewBox="0 0 14 20" fill="none">
+            <path d="M7 0C3.134 0 0 3.134 0 7C0 13 7 20 7 20C7 20 14 13 14 7C14 3.134 10.866 0 7 0Z" fill="#EA4335"/>
+            <circle cx="7" cy="7" r="3.5" fill="white"/>
+          </svg>
+          <span class="plan-name">Essencial</span>
+          <span class="plan-tag">Plano básico</span>
+        </div>
+        <hr class="plan-divider">
+        <div><span class="plan-price">R$ 397</span><span class="plan-price-unit">/mês</span></div>
+        <div class="plan-setup">Setup inicial R$ 497</div>
+        <hr class="plan-divider">
+        <div class="plan-cliente">
+          Dona Marta da salsicharia da praça. Perfil esquecido, sem foto boa, quase sem estrelinha. Precisa do básico bem feito pra voltar a aparecer.
+        </div>
+        <hr class="plan-divider">
+        <ul class="plan-list">
+          <li><span class="plan-bullet"></span>Ficha técnica completa</li>
+          <li><span class="plan-bullet"></span>1 post por semana</li>
+          <li><span class="plan-bullet"></span>Resposta a avaliação</li>
+          <li><span class="plan-bullet"></span>Relatório mensal simples</li>
+        </ul>
+        <a href="https://wa.me/5531999999999?text=Oi%20Nitai%2C%20li%20a%20proposta%20e%20quero%20o%20plano%20Essencial" class="plan-cta" target="_blank" rel="noopener">Escolher este plano</a>
+      </div>
+
+      <!-- PROFISSIONAL (recomendado) -->
+      <div class="plan-card plan-card--recommended">
+        <div class="plan-badge">Recomendado</div>
+        <div class="plan-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="20" viewBox="0 0 14 20" fill="none">
+            <path d="M7 0C3.134 0 0 3.134 0 7C0 13 7 20 7 20C7 20 14 13 14 7C14 3.134 10.866 0 7 0Z" fill="#EA4335"/>
+            <circle cx="7" cy="7" r="3.5" fill="white"/>
+          </svg>
+          <span class="plan-name">Profissional</span>
+          <span class="plan-tag">Plano profissional</span>
+        </div>
+        <hr class="plan-divider">
+        <div><span class="plan-price">R$ 497</span><span class="plan-price-unit">/mês</span></div>
+        <div class="plan-setup">Setup inicial R$ 697</div>
+        <hr class="plan-divider">
+        <div class="plan-cliente">
+          Seu João, dentista com 4 concorrentes no mesmo bairro. Precisa aparecer em 1º pra quem busca "ótica em Pará de Minas", postar direito e olhar de perto o que o concorrente tá fazendo.
+        </div>
+        <hr class="plan-divider">
+        <ul class="plan-list">
+          <li><span class="plan-bullet"></span>Tudo do Essencial</li>
+          <li><span class="plan-bullet"></span>2 posts/semana + fotos mensais</li>
+          <li><span class="plan-bullet"></span>Q&amp;A ativo</li>
+          <li><span class="plan-bullet"></span>Monitoramento de 3 concorrentes</li>
+          <li><span class="plan-bullet"></span>Relatório completo com ligações, rotas e cliques</li>
+        </ul>
+        <a href="https://wa.me/5531999999999?text=Oi%20Nitai%2C%20li%20a%20proposta%20e%20quero%20o%20plano%20Profissional" class="plan-cta plan-cta--red" target="_blank" rel="noopener">Escolher este plano</a>
+      </div>
+
+      <!-- PERFORMANCE -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="20" viewBox="0 0 14 20" fill="none">
+            <path d="M7 0C3.134 0 0 3.134 0 7C0 13 7 20 7 20C7 20 14 13 14 7C14 3.134 10.866 0 7 0Z" fill="#EA4335"/>
+            <circle cx="7" cy="7" r="3.5" fill="white"/>
+          </svg>
+          <span class="plan-name">Performance</span>
+          <span class="plan-tag">Plano premium</span>
+        </div>
+        <hr class="plan-divider">
+        <div><span class="plan-price">R$ 797</span><span class="plan-price-unit">/mês</span></div>
+        <div class="plan-setup">Setup inicial R$ 997</div>
+        <hr class="plan-divider">
+        <div class="plan-cliente">
+          Clínica com atendimento de ticket alto. Concorre com capital. Cada cliente vale R$ 3 mil+. Precisa dominar o nicho e medir cada agendamento que veio do Maps.
+        </div>
+        <hr class="plan-divider">
+        <ul class="plan-list">
+          <li><span class="plan-bullet"></span>Tudo do Profissional</li>
+          <li><span class="plan-bullet"></span>3 posts/semana</li>
+          <li><span class="plan-bullet"></span>GEO — aparecer nas respostas de IA do Google</li>
+          <li><span class="plan-bullet"></span>Mapa de calor do ranking por bairro</li>
+          <li><span class="plan-bullet"></span>Rastreamento de venda do Maps até o caixa</li>
+          <li><span class="plan-bullet"></span>Citações em diretórios locais</li>
+        </ul>
+        <a href="https://wa.me/5531999999999?text=Oi%20Nitai%2C%20li%20a%20proposta%20e%20quero%20o%20plano%20Performance" class="plan-cta" target="_blank" rel="noopener">Escolher este plano</a>
+      </div>
+
+    </div>
+
+    <p class="body-text body-text--sm italic" style="text-align:center;color:var(--cinza);margin-top:24px;">
+      Cliente-tipo é só exemplo pra ajudar. Recomendo o plano depois de olhar seu caso.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 6 — COMO PAGAR
+     ===================================================== -->
+<section class="section section--light">
+  <div class="inner">
+
+    <span class="label">Como você paga</span>
+    <div class="h2">Três jeitos de pagar</div>
+
+    <div class="pay-list">
+      <div>
+        <div class="pay-label">À vista no PIX (6 meses)</div>
+        <p class="pay-text">Setup + 6 mensalidades de uma vez, <strong>15% de desconto</strong>. É o que a maioria escolhe.</p>
+      </div>
+      <div>
+        <div class="pay-label">Parcelado no cartão (6x)</div>
+        <p class="pay-text">Setup + 6 mensalidades no cartão, <strong>sem juros</strong>. Cai na fatura normal.</p>
+      </div>
+      <div>
+        <div class="pay-label">À vista anual (12 meses)</div>
+        <p class="pay-text">Setup + 12 mensalidades no PIX, <strong>20% de desconto</strong>. Inclui bônus: diagnóstico operacional pontual <em>ou</em> relatório comparativo trimestral.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 7 — GARANTIA 120 DIAS
+     ===================================================== -->
+<section class="section section--night" style="padding: 80px 24px; text-align: center;">
+  <div class="inner">
+
+    <span class="label" style="color:var(--amarelo);">Garantia</span>
+    <div class="h2--ibm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:500;font-size:clamp(24px,3.5vw,32px);color:var(--offwhite);margin-bottom:24px;">
+      Se em 120 dias não melhorar, devolvo tudo.
+    </div>
+
+    <p class="body-text body-text--lg body-text--dark" style="max-width: 620px; margin: 0 auto;">
+      Se em 120 dias seu perfil não mostrar melhora real em PELO MENOS UM destes três pontos, devolvo tudo que você pagou — mensalidade + setup — sem pergunta. Basta me mandar uma mensagem.
+    </p>
+
+    <div class="garantia-items">
+      <div class="garantia-item">
+        <span class="garantia-num">1.</span>
+        <p class="garantia-text"><strong>Posição:</strong> subir 5 ou mais lugares pra sua palavra-chave principal.</p>
+      </div>
+      <div class="garantia-item">
+        <span class="garantia-num">2.</span>
+        <p class="garantia-text"><strong>Movimento:</strong> pelo menos 40% mais gente vendo seu perfil.</p>
+      </div>
+      <div class="garantia-item">
+        <span class="garantia-num">3.</span>
+        <p class="garantia-text"><strong>Ação:</strong> pelo menos 30% mais ligação + pedido de rota + mensagem.</p>
+      </div>
+    </div>
+
+    <p class="body-text body-text--sm italic" style="color:var(--medio);margin-top:28px;">
+      120 dias porque é o tempo médio que o Google leva pra processar mudança grande no perfil. Garantir antes disso seria te enganar — ou mentir pra mim mesmo.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 8 — PROVA
+     ===================================================== -->
+<section class="section section--light">
+  <div class="inner">
+
+    <span class="label">Prova</span>
+    <div class="h2">O que a gente já entregou</div>
+
+    <div class="proof-grid">
+      <div>
+        <img src="../assets/depoimento-poli-01.jpeg" alt="Dra. Poli Brito — Dermatologista" class="proof-img">
+      </div>
+      <div>
+        <div class="proof-num-big">81º → 28º</div>
+        <div class="proof-num-label">Posição no Google Maps em 3 meses</div>
+        <blockquote class="proof-quote">
+          "Saí do 81º pro 28º em três meses. A nota geral foi de 3,2 pra 4,7 e parei de ouvir cliente falando que não me achava no Google."
+        </blockquote>
+        <p class="proof-author">Dra. Poli Brito — Dermatologista (Belo Horizonte)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 9 — VITRINE DOS 10 PRIMEIROS
+     ===================================================== -->
+<section class="section section--nude">
+  <div class="inner">
+
+    <span class="label">Oferta de vitrine</span>
+    <div class="h2">Os 10 primeiros entram de graça pra vitrine</div>
+
+    <p class="body-text" style="margin-bottom:20px;">
+      Tô montando os 10 primeiros casos oficiais em Pará de Minas. Quem entrar nesse grupo ganha:
+    </p>
+
+    <ul class="bullet-list">
+      <li><span class="bullet-dot"></span><span>Depoimento em vídeo gravado por mim, sem custo a mais</span></li>
+      <li><span class="bullet-dot"></span><span>Caso publicado no site oficial da Nitai Lab</span></li>
+      <li><span class="bullet-dot"></span><span>Preço de hoje travado enquanto for cliente, mesmo se eu reajustar pra quem vier depois</span></li>
+    </ul>
+
+    <p class="body-text body-text--sm italic" style="color:var(--cinza);margin-top:20px;">
+      Do 11º em diante, contratos novos entram nas condições normais.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 10 — FAQ
+     ===================================================== -->
+<section class="section section--light">
+  <div class="inner">
+
+    <span class="label">FAQ</span>
+    <div class="h2">Perguntas que o pessoal costuma fazer</div>
+
+    <div class="faq-list">
+      <div>
+        <div class="faq-q">Já pago meu sobrinho pra mexer no Google. Vale a pena trocar?</div>
+        <p class="faq-a">Ótimo que ele cuida. Google é outro bicho — é onde quem já decidiu comprar vai procurar. Não compete com Instagram, soma. A gente cuida dessa parte, seu sobrinho continua no resto.</p>
+      </div>
+      <div>
+        <div class="faq-q">E se eu abrir outra loja?</div>
+        <p class="faq-a">Segunda unidade tem o setup com metade do preço, mensalidade normal. Perfis separados, gestão junto.</p>
+      </div>
+      <div>
+        <div class="faq-q">Vocês mexem no meu site e Instagram também?</div>
+        <p class="faq-a">Não entram nesse combo. Mas o trabalho no Google puxa movimento pro site sozinho. Rede social é combinação à parte, se você quiser depois.</p>
+      </div>
+      <div>
+        <div class="faq-q">Em quanto tempo eu vejo resultado?</div>
+        <p class="faq-a">Primeiro movimento: 30 dias. Dá pra ver diferença no seu ranking: 60 a 90 dias. Consolidação: 120 dias. Isso é tempo do próprio Google, não é a gente enrolando.</p>
+      </div>
+      <div>
+        <div class="faq-q">E se meu concorrente da rua também contratar?</div>
+        <p class="faq-a">Só atendo um por categoria e bairro. Quem chega primeiro fica. Enquanto você for cliente, ninguém do mesmo ramo entra.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 11 — PRÓXIMO PASSO
+     ===================================================== -->
+<section class="section section--dark" style="padding: 80px 24px; text-align: center;">
+  <div class="inner">
+
+    <span class="label" style="color:var(--amarelo);">Próximo passo</span>
+    <div class="h2--ibm" style="font-family:'IBM Plex Sans',sans-serif;font-weight:500;font-size:clamp(24px,3.5vw,32px);color:var(--offwhite);margin-bottom:8px;">
+      Como a gente começa
+    </div>
+
+    <ol class="steps-list">
+      <li class="step-item">
+        <span class="step-num">1.</span>
+        <span class="step-text">Você me chama no WhatsApp <strong>(31) 99999-9999</strong> dizendo o plano e como quer pagar.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">2.</span>
+        <span class="step-text">Assino e te mando o contrato (2 páginas, já preparado).</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">3.</span>
+        <span class="step-text">Primeiro pagamento confirmado.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">4.</span>
+        <span class="step-text">Em 48h a gente começa. Primeiro relatório chega dia <strong>15/05/2026</strong>.</span>
+      </li>
+    </ol>
+
+    <div class="flex-center" style="margin-top: 40px;">
+      <a href="https://wa.me/5531999999999?text=Oi%20Nitai%2C%20li%20a%20proposta%20e%20quero%20conversar" class="btn-cta" target="_blank" rel="noopener">
+        Chamar no WhatsApp agora
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SEÇÃO 12 — ASSINATURA E RODAPÉ
+     ===================================================== -->
+<footer class="footer">
+
+  <div class="footer-name">Nitai Morais</div>
+  <div class="footer-sub">Nitai Lab · Nova Lima, MG</div>
+  <div class="footer-contact">(31) 99999-9999 · nitai@nitailab.com.br · <a href="https://nitailab.com.br" style="color:var(--cinza);text-decoration:none;">nitailab.com.br</a></div>
+
+  <hr class="footer-hr">
+
+  <div class="footer-brand">Nitai Lab</div>
+  <div class="footer-legal">
+    Proposta preparada pessoalmente em 14/04/2026 para Ótica do Seu Pedro. Expira em 21/04/2026.
+  </div>
+
+</footer>
+
+</body>
+</html>

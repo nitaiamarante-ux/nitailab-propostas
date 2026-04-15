@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="expires-at" content="2026-04-21">
+  <title>Pocket — Ótica do Seu Pedro · Nitai Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600;700&family=Urbanist:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ====================================================
+       Nitai Lab — Pocket A4 v1.0 · Brandbook 14/04/2026
+       ==================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 15mm;
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none !important; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { font-size: 11pt; background: #F5F0EB; color: #1C1C1A; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Outfit', sans-serif; font-weight: 300; padding: 0; }
+
+    :root {
+      --carvao:   #1C1C1A;
+      --cinza:    #5A5A55;
+      --offwhite: #F5F0EB;
+      --nude:     #E8DDD2;
+      --borda:    #D4C9BE;
+      --medio:    #9A9690;
+      --vermelho: #EA4335;
+      --amarelo:  #FFCC00;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 180mm;
+      margin: 0 auto;
+      background: var(--offwhite);
+      padding: 0;
+    }
+
+    /* Topo wordmark */
+    .pocket-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1.5px solid var(--borda);
+      padding-bottom: 10pt;
+      margin-bottom: 12pt;
+    }
+    .wordmark-main {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--carvao);
+      line-height: 1.1;
+    }
+    .wordmark-main .w-resgate { font-size: 18pt; }
+    .wordmark-main .w-resto   { font-size: 14pt; }
+    .wordmark-sub {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      font-size: 8pt;
+      letter-spacing: 0.12em;
+      color: var(--medio);
+      display: block;
+      margin-top: 2pt;
+    }
+    .pocket-meta {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 9pt;
+      color: var(--medio);
+      margin-top: 2pt;
+    }
+
+    /* Label */
+    .label {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--vermelho);
+      display: block;
+      margin-bottom: 5pt;
+    }
+
+    /* Diagnóstico bullets */
+    .diag-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      font-size: 14pt;
+      color: var(--carvao);
+      margin-bottom: 8pt;
+      letter-spacing: 0.01em;
+    }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 5pt; margin-bottom: 10pt; }
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 7pt;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: var(--carvao);
+    }
+    .bullet-dot { flex-shrink: 0; width: 6pt; height: 6pt; border-radius: 50%; background: var(--vermelho); margin-top: 4pt; }
+    .bullet-list li strong { font-weight: 500; }
+
+    /* Caixa perda */
+    .perda-box {
+      background: var(--carvao);
+      color: var(--offwhite);
+      border-radius: 6pt;
+      padding: 12pt 16pt;
+      margin: 10pt 0;
+      display: flex;
+      align-items: center;
+      gap: 14pt;
+    }
+    .perda-num {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 28pt;
+      color: var(--amarelo);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .perda-label {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 11pt;
+      color: #c9b8a8;
+      line-height: 1.5;
+    }
+    .perda-label strong { color: var(--offwhite); font-weight: 400; }
+
+    /* Tabela planos */
+    .plans-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10pt 0;
+      font-family: 'Outfit', sans-serif;
+    }
+    .plans-table th {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cinza);
+      border-bottom: 1.5px solid var(--borda);
+      padding: 6pt 8pt;
+      text-align: left;
+    }
+    .plans-table td {
+      font-size: 10pt;
+      font-weight: 300;
+      color: var(--carvao);
+      border-bottom: 1px solid var(--borda);
+      padding: 7pt 8pt;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+    .plans-table tr.recommended td {
+      background: #FFFDE0;
+      border-top: 1.5px solid var(--vermelho);
+      border-bottom: 1.5px solid var(--vermelho);
+    }
+    .plans-table .plan-price-cell {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14pt;
+      color: var(--carvao);
+      white-space: nowrap;
+    }
+    .plans-table .plan-name-cell {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      font-size: 12pt;
+    }
+    .plans-table .plan-name-cell .rec-badge {
+      display: inline-block;
+      background: var(--vermelho);
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2pt 5pt;
+      border-radius: 3pt;
+      margin-left: 4pt;
+      vertical-align: middle;
+    }
+    .plans-table .setup-row {
+      font-size: 9pt;
+      color: var(--medio);
+      display: block;
+    }
+
+    /* Garantia box */
+    .garantia-box {
+      border: 1.5px solid var(--vermelho);
+      border-radius: 6pt;
+      padding: 10pt 14pt;
+      margin: 10pt 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10pt;
+    }
+    .garantia-icon { flex-shrink: 0; margin-top: 1pt; }
+    .garantia-text {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 11pt;
+      color: var(--carvao);
+      line-height: 1.5;
+    }
+    .garantia-text strong { font-weight: 500; color: var(--vermelho); }
+
+    /* QR + rodapé */
+    .pocket-footer {
+      display: flex;
+      align-items: center;
+      gap: 14pt;
+      border-top: 1.5px solid var(--borda);
+      padding-top: 10pt;
+      margin-top: 10pt;
+    }
+    .qr-block { flex-shrink: 0; }
+    .qr-block img { width: 85pt; height: 85pt; display: block; }
+    .qr-label {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 10pt;
+      color: var(--cinza);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .qr-expire {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 9pt;
+      color: var(--vermelho);
+      margin-top: 4pt;
+    }
+    .pocket-brand {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--medio);
+    }
+    .pocket-contact {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 9pt;
+      color: var(--cinza);
+      margin-top: 3pt;
+    }
+
+    /* Divisor */
+    hr { border: none; border-top: 1px solid var(--borda); margin: 8pt 0; }
+
+    /* Print CTA (visível só na tela) */
+    .print-cta {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background: #1C1C1A;
+      color: #F5F0EB;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      max-width: 240px;
+    }
+    @media print { .print-cta { display: none !important; } }
+  </style>
+</head>
+<body>
+
+<button class="print-cta no-print" onclick="window.print()">Imprimir / Salvar PDF</button>
+
+<div class="page">
+
+  <!-- TOPO: Wordmark -->
+  <div class="pocket-header">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="34" viewBox="0 0 24 34" fill="none" aria-label="Pino Resgate seu Google">
+      <path d="M12 0C5.373 0 0 5.373 0 12C0 22 12 34 12 34C12 34 24 22 24 12C24 5.373 18.627 0 12 0Z" fill="#EA4335"/>
+      <circle cx="12" cy="12" r="5.5" fill="white"/>
+      <text x="12" y="15.5" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-weight="700" font-size="6" fill="#EA4335">1º</text>
+    </svg>
+    <div>
+      <div class="wordmark-main">
+        <span class="w-resgate">RESGATE</span> <span class="w-resto">SEU GOOGLE</span>
+      </div>
+      <span class="wordmark-sub">por Nitai Lab</span>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <div class="pocket-meta">Ótica do Seu Pedro</div>
+      <div class="pocket-meta">Pará de Minas · 14/04/2026</div>
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO: 3 bullets principais -->
+  <span class="label">O que achei no seu Google</span>
+  <div class="diag-title">Ótica do Seu Pedro está em 11º lugar.</div>
+
+  <ul class="bullet-list">
+    <li>
+      <span class="bullet-dot"></span>
+      <span><strong>Posição:</strong> você aparece em 11º pra "ótica em Pará de Minas". Óticas Visão Clara tá em 1º, com mais de 200 avaliações respondidas.</span>
+    </li>
+    <li>
+      <span class="bullet-dot"></span>
+      <span><strong>Avaliações:</strong> 18 avaliações, 12 sem resposta e 2 negativa(s) aparecendo antes do cliente decidir te ligar.</span>
+    </li>
+    <li>
+      <span class="bullet-dot"></span>
+      <span><strong>Movimento:</strong> último post em novembro de 2024. Perfil parado o Google considera menos relevante e mostra menos.</span>
+    </li>
+  </ul>
+
+  <!-- CAIXA PERDA -->
+  <div class="perda-box">
+    <div class="perda-num">R$ 7.800</div>
+    <div class="perda-label"><strong>por mês</strong> estimado indo pro concorrente que aparece em 1º. Ticket médio R$ 320, LTV R$ 1.800.</div>
+  </div>
+
+  <hr>
+
+  <!-- TABELA PLANOS -->
+  <span class="label">Os três planos</span>
+  <table class="plans-table">
+    <thead>
+      <tr>
+        <th>Plano</th>
+        <th>Mensalidade</th>
+        <th>3 entregas-chave</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="plan-name-cell">
+          Essencial
+          <span class="setup-row">Setup R$ 497</span>
+        </td>
+        <td class="plan-price-cell">R$ 397</td>
+        <td>Ficha técnica · 1 post/semana · Relatório simples</td>
+      </tr>
+      <tr class="recommended">
+        <td class="plan-name-cell">
+          Profissional
+          <span class="rec-badge">recomendado</span>
+          <span class="setup-row">Setup R$ 697</span>
+        </td>
+        <td class="plan-price-cell">R$ 497</td>
+        <td>2 posts/semana · Monitor de 3 concorrentes · Relatório completo</td>
+      </tr>
+      <tr>
+        <td class="plan-name-cell">
+          Performance
+          <span class="setup-row">Setup R$ 997</span>
+        </td>
+        <td class="plan-price-cell">R$ 797</td>
+        <td>3 posts/semana · GEO (IA Google) · Mapa de calor</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- GARANTIA -->
+  <div class="garantia-box">
+    <div class="garantia-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 1L12.5 6.5L18.5 7.3L14.25 11.4L15.3 17.3L10 14.5L4.7 17.3L5.75 11.4L1.5 7.3L7.5 6.5L10 1Z" stroke="#EA4335" stroke-width="1.4" fill="none"/>
+      </svg>
+    </div>
+    <div class="garantia-text">
+      <strong>Garantia 120 dias:</strong> se seu perfil não subir 5+ posições, ou tiver 40%+ mais visibilidade, ou 30%+ mais ações — devolvo tudo. Sem pergunta.
+    </div>
+  </div>
+
+  <!-- RODAPÉ com QR -->
+  <div class="pocket-footer">
+    <div class="qr-block">
+      <img src="../qr-otica-do-seu-pedro-5lv3.png" alt="QR Code proposta completa">
+    </div>
+    <div style="flex:1;">
+      <div class="qr-label">Proposta completa: escaneie o QR code.</div>
+      <div class="qr-expire">Expira em 21/04/2026</div>
+      <div style="margin-top:8pt;">
+        <div class="pocket-brand">Nitai Lab</div>
+        <div class="pocket-contact">Nitai Morais · WhatsApp (31) 99999-9999 · nitailab.com.br</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

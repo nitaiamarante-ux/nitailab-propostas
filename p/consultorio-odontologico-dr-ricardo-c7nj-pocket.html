@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="expires-at" content="2026-04-21">
+  <title>Pocket — Consultório Odontológico Dr. Ricardo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold:  #A07840;
+      --goldL: #C9A96E;
+      --dark:  #1A1814;
+      --mid:   #5A5650;
+      --soft:  #9A9690;
+      --bdr:   #D4C9BE;
+      --bg2:   #EDE6DC;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: var(--dark);
+      background: white;
+    }
+
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+
+    .page {
+      width: 100%;
+    }
+
+    /* Topo */
+    .topo {
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 8pt;
+      margin-bottom: 10pt;
+    }
+
+    .brand {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 10pt;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .pocket-titulo {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 16pt;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-top: 4pt;
+    }
+
+    .pocket-sub {
+      font-size: 9pt;
+      color: var(--mid);
+      margin-top: 2pt;
+    }
+
+    /* Diagnóstico */
+    .secao-titulo {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin: 10pt 0 5pt;
+    }
+
+    .diag-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4pt;
+    }
+
+    .diag-lista li {
+      font-size: 10pt;
+      line-height: 1.45;
+      display: flex;
+      gap: 8pt;
+    }
+
+    .diag-lista li::before {
+      content: '';
+      display: block;
+      flex-shrink: 0;
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      margin-top: 7pt;
+    }
+
+    /* Perda */
+    .perda-bloco {
+      text-align: center;
+      background: var(--bg2);
+      border: 1px solid var(--gold);
+      border-radius: 3pt;
+      padding: 8pt 12pt;
+      margin: 10pt 0;
+    }
+
+    .perda-numero {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 28pt;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .perda-label {
+      font-size: 9pt;
+      color: var(--mid);
+      margin-top: 3pt;
+    }
+
+    /* Planos */
+    .planos-tabela {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8pt 0;
+    }
+
+    .planos-tabela th {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 5pt 8pt;
+      border: 1px solid var(--bdr);
+      text-align: left;
+      background: white;
+    }
+
+    .planos-tabela th.destaque-col {
+      background: #f7f0e4;
+    }
+
+    .planos-tabela td {
+      font-size: 9pt;
+      padding: 4pt 8pt;
+      border: 1px solid var(--bdr);
+      vertical-align: top;
+      line-height: 1.4;
+    }
+
+    .planos-tabela td.destaque-col {
+      background: #f7f0e4;
+    }
+
+    .preco-cel {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 12pt;
+    }
+
+    /* Garantia */
+    .garantia-linha {
+      border: 1pt solid var(--gold);
+      border-radius: 3pt;
+      padding: 7pt 10pt;
+      margin: 10pt 0;
+      font-size: 10pt;
+    }
+
+    .garantia-linha strong {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 11pt;
+    }
+
+    /* QR + rodapé */
+    .rodape-pocket {
+      display: flex;
+      align-items: flex-start;
+      gap: 16pt;
+      border-top: 1px solid var(--bdr);
+      padding-top: 10pt;
+      margin-top: 10pt;
+    }
+
+    .qr-bloco img {
+      width: 85pt;
+      height: 85pt;
+      display: block;
+    }
+
+    .qr-texto {
+      flex: 1;
+    }
+
+    .qr-label {
+      font-size: 9pt;
+      color: var(--mid);
+      line-height: 1.45;
+      margin-bottom: 6pt;
+    }
+
+    .expiracao-pocket {
+      font-size: 9pt;
+      color: var(--gold);
+    }
+
+    .nitai-rodape {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 10pt;
+      color: var(--dark);
+      margin-top: 6pt;
+    }
+
+    .nitai-contato {
+      font-size: 9pt;
+      color: var(--mid);
+    }
+
+    @media screen {
+      body {
+        background: #f0ebe4;
+        padding: 20px;
+      }
+      .page {
+        background: white;
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 15mm;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Topo -->
+  <div class="topo">
+    <span class="brand">Nitai Lab</span>
+    <h1 class="pocket-titulo">Resgate do Google &mdash; Consultório Odontológico Dr. Ricardo</h1>
+    <p class="pocket-sub">Diagnóstico preparado por Nitai Morais &bull; 14/04/2026</p>
+  </div>
+
+  <!-- Diagnóstico — 3 bullets -->
+  <p class="secao-titulo">Diagnóstico</p>
+  <ul class="diag-lista">
+    <li><strong>Posição:</strong> você aparece em 9º lugar quando alguém busca &ldquo;dentista pará de minas&rdquo; em Pará de Minas. Odonto Saúde Pará de Minas aparece em 1º.</li>
+    <li><strong>Avaliações:</strong> 23 no total, 17 sem resposta, 4 negativas visíveis antes de decidirem te ligar.</li>
+    <li><strong>Atividade:</strong> última postagem em janeiro de 2024. Perfil parado perde ranking.</li>
+  </ul>
+
+  <!-- Perda -->
+  <div class="perda-bloco">
+    <p class="perda-numero">R$ 3.200/mês</p>
+    <p class="perda-label">indo pro concorrente no seu lugar</p>
+  </div>
+
+  <!-- Planos -->
+  <p class="secao-titulo">Os três planos</p>
+  <table class="planos-tabela">
+    <thead>
+      <tr>
+        <th>Essencial</th>
+        <th class="destaque-col">Profissional *</th>
+        <th>Performance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="preco-cel">R$ 397/mês</span><br><span style="font-size:8pt;color:#9A9690">Setup R$ 497</span></td>
+        <td class="destaque-col"><span class="preco-cel">R$ 497/mês</span><br><span style="font-size:8pt;color:#9A9690">Setup R$ 697</span></td>
+        <td><span class="preco-cel">R$ 797/mês</span><br><span style="font-size:8pt;color:#9A9690">Setup R$ 997</span></td>
+      </tr>
+      <tr>
+        <td>Otimização do perfil<br>1 post/semana<br>Resposta avaliações<br>Relatório simples</td>
+        <td class="destaque-col">Tudo do Essencial<br>2 posts/semana + fotos<br>Q&amp;A ativo<br>Monitor. 3 concorrentes<br>Relatório completo</td>
+        <td>Tudo do Profissional<br>3 posts/semana<br>GEO (resposta IA)<br>Heatmap de ranking<br>Rastreamento de vendas</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:8pt;color:var(--soft);margin-bottom:4pt">* Recomendado</p>
+
+  <!-- Garantia -->
+  <div class="garantia-linha">
+    <strong>Garantia de 120 dias:</strong> se não melhorar em pelo menos um dos três indicadores (posição, visibilidade ou ação), devolvo todo o valor pago.
+  </div>
+
+  <!-- QR + rodapé -->
+  <div class="rodape-pocket">
+    <div class="qr-bloco">
+      <img src="qr-consultorio-odontologico-dr-ricardo-c7nj.png" alt="QR Code proposta completa">
+    </div>
+    <div class="qr-texto">
+      <p class="qr-label">Proposta completa no QR. Acesse<br><strong>propostas.nitailab.com.br/p/consultorio-odontologico-dr-ricardo-c7nj</strong></p>
+      <p class="expiracao-pocket">Expira em 21/04/2026</p>
+      <p class="nitai-rodape">Nitai Morais</p>
+      <p class="nitai-contato">WhatsApp (31) 99847-2201 &bull; nitailab.com.br</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var exp = document.querySelector('meta[name="expires-at"]').content;
+  if (new Date() > new Date(exp)) {
+    document.body.innerHTML = '<div style="max-width:600px;margin:120px auto;padding:40px;text-align:center;font-family:system-ui,sans-serif;color:#1A1814"><h1 style="font-weight:700;font-size:28px;margin-bottom:16px">Proposta expirada</h1><p style="font-size:16px;line-height:1.6;color:#5A5650">Esta proposta expirou em ' + new Date(exp).toLocaleDateString("pt-BR") + '. Para receber uma nova, fale comigo no WhatsApp.</p></div>';
+    document.title = 'Proposta expirada';
+  }
+})();
+</script>
+
+</body>
+</html>

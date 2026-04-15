@@ -1,0 +1,7 @@
+# Dados de clientes — nunca commitar
+/clientes/
+
+# Python
+*.pyc
+__pycache__/
+*.py[cod]

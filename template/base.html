@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="expires-at" content="{{DATA_EXPIRACAO_ISO}}">
+  <title>Diagnóstico Técnico — {{NOME_DO_NEGOCIO}} · Nitai Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500;600;700&family=Urbanist:wght@300;400;500;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ====================================================
+       Nitai Lab — Laudo Técnico Resgate seu Google v2.0
+       Brandbook 14/04/2026 — Registro: documento técnico
+       ==================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 18mm 18mm 16mm 18mm;
+    }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none !important; }
+      .page-break-before { page-break-before: always; }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: #1C1C1A;
+      background: #F5F0EB;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --carvao:   #1C1C1A;
+      --cinza:    #5A5A55;
+      --offwhite: #F5F0EB;
+      --nude:     #E8DDD2;
+      --borda:    #D4C9BE;
+      --medio:    #9A9690;
+      --vermelho: #EA4335;
+      --amarelo:  #FFCC00;
+      --azul:     #4285F4;
+    }
+
+    /* Layout */
+    .doc-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--offwhite);
+      padding: 0 0 48px;
+    }
+
+    /* Cabeçalho de documento (topo de cada seção impressa) */
+    .doc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px 10px;
+      border-bottom: 1px solid var(--borda);
+      background: var(--offwhite);
+    }
+    .doc-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .doc-header-brand {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--carvao);
+    }
+    .doc-header-ref {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      color: var(--medio);
+    }
+
+    /* Seções */
+    .sec {
+      padding: 40px 32px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .sec:last-child { border-bottom: none; }
+    .sec--garantia {
+      border: 2px solid var(--vermelho);
+      margin: 0 32px 32px;
+      padding: 28px;
+      border-radius: 4px;
+    }
+    .inner { max-width: 680px; }
+
+    /* Tipografia */
+    .label {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--vermelho);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .sec-title {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--carvao);
+      margin-bottom: 18px;
+      letter-spacing: 0;
+    }
+    .sec-title--sm {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--carvao);
+      margin-bottom: 14px;
+    }
+    .area-name {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--carvao);
+      margin-bottom: 5px;
+    }
+    .body-text {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--carvao);
+    }
+    .body-text--sm {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .body-text--xs {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .body-text--cinza { color: var(--cinza); }
+    .body-text--medio { color: var(--medio); }
+    .italic { font-style: italic; }
+    .mt-8  { margin-top: 8px; }
+    .mt-12 { margin-top: 12px; }
+    .mt-16 { margin-top: 16px; }
+    .mt-20 { margin-top: 20px; }
+    .mt-24 { margin-top: 24px; }
+    .mt-32 { margin-top: 32px; }
+
+    /* Capa */
+    .capa {
+      padding: 48px 32px 40px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .capa-label {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--vermelho);
+      display: block;
+      margin-bottom: 14px;
+    }
+    .capa-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      letter-spacing: 0.01em;
+      color: var(--carvao);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .capa-divider {
+      border: none;
+      border-top: 1px solid var(--borda);
+      margin: 20px 0;
+    }
+    .capa-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+    }
+    .capa-meta-row {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--cinza);
+    }
+    .capa-meta-row strong {
+      font-weight: 500;
+      color: var(--carvao);
+    }
+    .capa-resumo {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 4px;
+    }
+    .capa-resumo p {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--carvao);
+    }
+
+    /* Sumário */
+    .sumario-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sumario-list li {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--carvao);
+      line-height: 1.5;
+      display: flex;
+      gap: 10px;
+    }
+    .sumario-num {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--vermelho);
+      flex-shrink: 0;
+      width: 20px;
+    }
+
+    /* Tabelas */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Outfit', sans-serif;
+      margin: 16px 0;
+    }
+    .data-table th {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cinza);
+      border-bottom: 1.5px solid var(--borda);
+      padding: 8px 10px;
+      text-align: left;
+      background: var(--offwhite);
+    }
+    .data-table td {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--carvao);
+      border-bottom: 1px solid var(--borda);
+      padding: 9px 10px;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td.col-metric {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--cinza);
+      width: 38%;
+    }
+    .data-table td.col-cliente {
+      font-weight: 400;
+    }
+    .data-table td.col-highlight {
+      background: var(--nude);
+    }
+    .data-table .col-label {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--cinza);
+    }
+
+    /* Tabela de planos (grande) */
+    .plans-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Outfit', sans-serif;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+    .plans-table th {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cinza);
+      border-bottom: 1.5px solid var(--borda);
+      padding: 9px 10px;
+      text-align: left;
+    }
+    .plans-table th.col-b { background: var(--nude); }
+    .plans-table td {
+      font-weight: 300;
+      color: var(--carvao);
+      border-bottom: 1px solid var(--borda);
+      padding: 10px 10px;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .plans-table td.col-area {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--cinza);
+      width: 18%;
+    }
+    .plans-table td.col-b { background: var(--nude); }
+    .plans-table tr:last-child td { border-bottom: none; }
+
+    /* Tabela de preços */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Outfit', sans-serif;
+      margin: 16px 0;
+    }
+    .price-table th {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cinza);
+      border-bottom: 1.5px solid var(--borda);
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .price-table td {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--carvao);
+      border-bottom: 1px solid var(--borda);
+      padding: 9px 10px;
+      vertical-align: middle;
+    }
+    .price-table tr.row-rec td {
+      background: var(--nude);
+      font-weight: 400;
+    }
+    .price-table .price-val {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .price-table tr:last-child td { border-bottom: none; }
+
+    /* Recomendação técnica */
+    .rec-box {
+      border-left: 3px solid var(--vermelho);
+      padding: 16px 20px;
+      background: var(--offwhite);
+      margin-top: 24px;
+    }
+    .rec-box p {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--carvao);
+    }
+    .rec-box strong {
+      font-weight: 500;
+    }
+
+    /* Bullet list */
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .bullet-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 14px; line-height: 1.6; color: var(--carvao);
+    }
+    .bullet-dot { flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--vermelho); margin-top: 6px; }
+
+    /* Mini-mock Maps */
+    .maps-mock {
+      background: #fff;
+      border: 1px solid var(--borda);
+      border-radius: 6px;
+      max-width: 520px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .maps-mock__bar {
+      background: #f8f8f8;
+      border-bottom: 1px solid #e8e8e8;
+      padding: 9px 14px;
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Outfit', sans-serif; font-size: 13px; color: #5a5a55;
+    }
+    .maps-mock__result {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px;
+      border-bottom: 1px solid #f0ece8;
+    }
+    .maps-mock__result:last-child { border-bottom: none; }
+    .maps-mock__result--cliente { background: #fafafa; }
+    .maps-mock__result-info { flex: 1; }
+    .maps-mock__result-name { font-family: 'Outfit', sans-serif; font-weight: 500; font-size: 13px; color: var(--carvao); }
+    .maps-mock__result-rating {
+      font-family: 'Outfit', sans-serif; font-size: 12px; color: var(--cinza);
+      display: flex; align-items: center; gap: 4px; margin-top: 2px;
+    }
+    .maps-mock__gap {
+      padding: 7px 14px;
+      font-family: 'Outfit', sans-serif; font-size: 12px; color: var(--medio); font-style: italic;
+      border-bottom: 1px solid #f0ece8;
+    }
+    .badge-posicao {
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      background: var(--nude); color: var(--carvao);
+      padding: 3px 7px; border-radius: 3px; white-space: nowrap;
+    }
+
+    /* Áreas intervenção */
+    .areas-list { display: flex; flex-direction: column; gap: 20px; margin-top: 16px; }
+    .area-item { padding-left: 0; }
+    .area-num {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--vermelho);
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    /* Caso de referência */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-top: 16px;
+    }
+    @media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } }
+    .proof-img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 4px;
+      border: 1px solid var(--borda);
+    }
+    .proof-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .proof-quote {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--carvao);
+      line-height: 1.6;
+    }
+    .proof-author {
+      font-family: 'Urbanist', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--cinza);
+    }
+
+    /* Garantia */
+    .garantia-items { display: flex; flex-direction: column; gap: 16px; margin: 16px 0; }
+    .garantia-item { display: flex; align-items: flex-start; gap: 16px; }
+    .garantia-num {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 700; font-size: 22px;
+      color: var(--vermelho); flex-shrink: 0; width: 28px;
+    }
+    .garantia-text {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300; font-size: 14px; color: var(--carvao); line-height: 1.6; padding-top: 3px;
+    }
+    .garantia-text strong { font-weight: 500; }
+
+    .cond-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 14px; }
+    .cond-list li {
+      font-family: 'Urbanist', sans-serif; font-weight: 400; font-size: 12px;
+      color: var(--cinza); line-height: 1.5;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .cond-list li::before { content: "—"; flex-shrink: 0; color: var(--medio); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 18px; }
+    .faq-q {
+      font-family: 'Urbanist', sans-serif; font-weight: 500; font-size: 14px;
+      color: var(--carvao); margin-bottom: 4px;
+    }
+    .faq-q::before { content: ""; display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--vermelho); margin-right: 8px; vertical-align: middle; }
+    .faq-a {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 14px;
+      color: var(--cinza); line-height: 1.6; padding-left: 13px;
+    }
+
+    /* Passos */
+    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .step-item { display: flex; align-items: flex-start; gap: 14px; }
+    .step-num {
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: 13px;
+      color: var(--vermelho); flex-shrink: 0; width: 20px; padding-top: 2px;
+    }
+    .step-text {
+      font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 15px;
+      color: var(--carvao); line-height: 1.6;
+    }
+    .step-text strong { font-weight: 500; }
+
+    /* Rodapé */
+    .footer {
+      padding: 28px 32px 24px;
+      background: var(--offwhite);
+      border-top: 1px solid var(--borda);
+      text-align: center;
+    }
+    .footer-hr { border: none; border-top: 1px solid var(--borda); margin: 18px auto; max-width: 320px; }
+    .footer-name { font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 16px; color: var(--carvao); margin-bottom: 3px; }
+    .footer-sub { font-family: 'Urbanist', sans-serif; font-weight: 400; font-size: 13px; color: var(--cinza); margin-bottom: 3px; }
+    .footer-contact { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 13px; color: var(--cinza); margin-bottom: 18px; }
+    .footer-brand { font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--medio); margin-bottom: 5px; }
+    .footer-legal { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 11px; color: var(--medio); }
+
+    /* Botão imprimir (apenas tela) */
+    .print-cta {
+      display: block; margin: 20px auto; padding: 12px 24px;
+      background: var(--carvao); color: var(--offwhite);
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 500; font-size: 14px;
+      border: none; border-radius: 4px; cursor: pointer; text-align: center; max-width: 240px;
+    }
+    @media print { .print-cta { display: none !important; } }
+  </style>
+</head>
+<body>
+
+<button class="print-cta no-print" onclick="window.print()">Imprimir / Salvar PDF</button>
+
+<div class="doc-wrap">
+
+  <!-- ── CABEÇALHO DE DOCUMENTO ────────────────────── -->
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 24 34" fill="none" aria-hidden="true">
+        <path d="M12 0C5.373 0 0 5.373 0 12C0 22 12 34 12 34C12 34 24 22 24 12C24 5.373 18.627 0 12 0Z" fill="#EA4335"/>
+        <circle cx="12" cy="12" r="5.5" fill="white"/>
+      </svg>
+      <span class="doc-header-brand">Resgate seu Google</span>
+    </div>
+    <span class="doc-header-ref">Ref: NL-{{ANO}}-{{HASH_NUMERICO}}</span>
+  </div>
+
+
+  <!-- ── CAPA ──────────────────────────────────────── -->
+  <div class="capa">
+
+    <span class="capa-label">Diagnóstico Técnico e Plano de Ação</span>
+
+    <h1 class="capa-title">Perfil Google · {{NOME_DO_NEGOCIO}}</h1>
+
+    <hr class="capa-divider">
+
+    <div class="capa-meta">
+      <div>
+        <p class="capa-meta-row">Cidade: <strong>{{CIDADE}}</strong></p>
+        <p class="capa-meta-row">Data: <strong>{{DATA}}</strong></p>
+        <p class="capa-meta-row">Validade: <strong>{{DATA_EXPIRACAO}}</strong></p>
+      </div>
+      <div>
+        <p class="capa-meta-row">Elaborado por: <strong>Nitai Morais</strong></p>
+        <p class="capa-meta-row">Contato: <strong>{{TELEFONE}}</strong> · nitai@nitailab.com.br</p>
+        <p class="capa-meta-row">Referência: <strong>NL-{{ANO}}-{{HASH_NUMERICO}}</strong></p>
+      </div>
+    </div>
+
+    <div class="capa-resumo">
+      <p>Este documento apresenta o diagnóstico técnico do perfil Google da {{NOME_DO_NEGOCIO}} em Pará de Minas, comparativo factual com os principais concorrentes diretos, plano de ação em 11 áreas de intervenção, três opções de implementação com escopo crescente de inteligência aplicada, garantia de entrega em 120 dias e passo a passo de contratação.</p>
+    </div>
+
+  </div>
+
+
+  <!-- ── SUMÁRIO ───────────────────────────────────── -->
+  <div class="sec">
+    <div class="sec-title--sm">Sumário</div>
+    <ol class="sumario-list">
+      <li><span class="sumario-num">1.</span>Resumo do diagnóstico</li>
+      <li><span class="sumario-num">2.</span>Estado atual do perfil (evidências técnicas)</li>
+      <li><span class="sumario-num">3.</span>Comparativo com a concorrência</li>
+      <li><span class="sumario-num">4.</span>Plano de ação — 11 áreas de intervenção</li>
+      <li><span class="sumario-num">5.</span>Opções de implementação</li>
+      <li><span class="sumario-num">6.</span>Formas de pagamento</li>
+      <li><span class="sumario-num">7.</span>Caso de referência</li>
+      <li><span class="sumario-num">8.</span>Garantia técnica de 120 dias</li>
+      <li><span class="sumario-num">9.</span>Como proceder</li>
+      <li><span class="sumario-num">10.</span>Perguntas frequentes</li>
+    </ol>
+  </div>
+
+
+  <!-- ── 1. RESUMO DO DIAGNÓSTICO ─────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">1. Resumo do diagnóstico</h2>
+    <p class="body-text">
+      Após auditoria do perfil Google da {{NOME_DO_NEGOCIO}}, constatei que o negócio aparece em <strong>{{POSICAO}}º lugar</strong> quando alguém busca "{{PALAVRA_CHAVE_PRINCIPAL}}" em Pará de Minas. O perfil apresenta pontos críticos de presença, frequência de conteúdo e reputação que estão fazendo o Google priorizar concorrentes. A situação é corrigível com execução consistente ao longo de 4 a 6 meses. Recomendo a <strong>Opção B — Profissional</strong> como ponto de equilíbrio entre o que o perfil precisa hoje e o que o orçamento justifica. O detalhamento completo está nas seções a seguir.
+    </p>
+  </div>
+
+
+  <!-- ── 2. ESTADO ATUAL ───────────────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">2. Estado atual do perfil (evidências técnicas)</h2>
+    <p class="body-text body-text--sm">A tabela abaixo apresenta o estado atual do perfil em indicadores-chave. Cada linha é evidência objetiva, verificável no próprio perfil no Google Maps.</p>
+
+    <table class="data-table mt-16">
+      <thead>
+        <tr>
+          <th class="col-metric">Indicador</th>
+          <th>Situação atual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-metric">Posição pra "{{PALAVRA_CHAVE_PRINCIPAL}}" em {{CIDADE}}</td>
+          <td class="col-cliente"><strong>{{POSICAO}}º lugar</strong></td>
+        </tr>
+        <tr>
+          <td class="col-metric">Avaliações totais</td>
+          <td>{{NUMERO_AVALIACOES}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Avaliações sem resposta</td>
+          <td>{{NUMERO_SEM_RESPOSTA}} ({{PERCENT_SEM_RESPOSTA}}% do total)</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Avaliações negativas visíveis</td>
+          <td>{{NUMERO_NEGATIVAS}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Nota média</td>
+          <td>{{NOTA_ATUAL}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Fotos publicadas</td>
+          <td>{{NUMERO_FOTOS}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Data da última foto</td>
+          <td>{{DATA_ULTIMA_FOTO}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Postagens no último trimestre</td>
+          <td>{{POSTAGENS_ULTIMO_TRIMESTRE}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Consistência de dados (NAP)</td>
+          <td>{{PROBLEMAS_NAP}}</td>
+        </tr>
+        <tr>
+          <td class="col-metric">Data da última postagem</td>
+          <td>{{DATA_ULTIMO_POST}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="body-text body-text--sm body-text--cinza mt-12">
+      Cada um desses pontos é um sinal usado pelo algoritmo do Google pra decidir se mostra o perfil antes, depois ou nem mostra pra quem tá procurando. Perfil parado, sem resposta a avaliação, com fotos antigas ou dados divergentes — o Google entende que o negócio tá menos ativo que o concorrente.
+    </p>
+
+    <!-- Mini-mock Maps -->
+    <div class="maps-mock mt-20">
+      <div class="maps-mock__bar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;">
+          <circle cx="5.8" cy="5.8" r="4.3" stroke="#4285F4" stroke-width="1.5"/>
+          <line x1="9" y1="9" x2="13" y2="13" stroke="#4285F4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span>{{PALAVRA_CHAVE_PRINCIPAL}} em {{CIDADE}}</span>
+      </div>
+      <div class="maps-mock__result">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 28 38" fill="none" style="flex-shrink:0;">
+          <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#EA4335"/>
+          <circle cx="14" cy="14" r="7" fill="white"/>
+          <text x="14" y="17.5" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="8" fill="#EA4335">1</text>
+        </svg>
+        <div class="maps-mock__result-info">
+          <div class="maps-mock__result-name">{{CONCORRENTE_1}}</div>
+          <div class="maps-mock__result-rating">
+            <svg width="11" height="11" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#FFCC00"/></svg>
+            <span>{{CONCORRENTE_1_NOTA}}</span>
+            <span style="color:var(--medio);">({{CONCORRENTE_1_AVALIACOES}} avaliações)</span>
+          </div>
+        </div>
+      </div>
+      <div class="maps-mock__result">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 28 38" fill="none" style="flex-shrink:0;">
+          <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#EA4335"/>
+          <circle cx="14" cy="14" r="7" fill="white"/>
+          <text x="14" y="17.5" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="8" fill="#EA4335">2</text>
+        </svg>
+        <div class="maps-mock__result-info">
+          <div class="maps-mock__result-name">{{CONCORRENTE_2}}</div>
+          <div class="maps-mock__result-rating">
+            <svg width="11" height="11" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#FFCC00"/></svg>
+            <span>{{CONCORRENTE_2_NOTA}}</span>
+            <span style="color:var(--medio);">({{CONCORRENTE_2_AVALIACOES}} avaliações)</span>
+          </div>
+        </div>
+      </div>
+      <div class="maps-mock__gap">· · · (mais {{NUMERO_CONCORRENTES_NA_FRENTE}} negócios aparecem antes de você)</div>
+      <div class="maps-mock__result maps-mock__result--cliente">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="32" viewBox="0 0 28 38" fill="none" style="flex-shrink:0;">
+          <path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#A8A29E"/>
+          <circle cx="14" cy="14" r="7" fill="white"/>
+          <text x="14" y="17.5" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="7" fill="#A8A29E">{{POSICAO}}º</text>
+        </svg>
+        <div class="maps-mock__result-info">
+          <div class="maps-mock__result-name">{{NOME_DO_NEGOCIO}}</div>
+          <div class="maps-mock__result-rating">
+            <svg width="11" height="11" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#C5BDB8"/></svg>
+            <span style="color:var(--medio);">{{NOTA_ATUAL}}</span>
+            <span style="color:var(--medio);">({{NUMERO_AVALIACOES}} avaliações)</span>
+          </div>
+        </div>
+        <span class="badge-posicao">Posição atual</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ── 3. COMPARATIVO ────────────────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">3. Comparativo com a concorrência</h2>
+    <p class="body-text body-text--sm">A tabela abaixo compara {{NOME_DO_NEGOCIO}} com os 2 concorrentes diretos em melhor posição no ranking local. Os dados são públicos, coletados diretamente do Google Maps em {{DATA}}.</p>
+
+    <table class="data-table mt-16">
+      <thead>
+        <tr>
+          <th>Métrica</th>
+          <th>{{NOME_DO_NEGOCIO}}</th>
+          <th>{{CONCORRENTE_1}} (1º)</th>
+          <th>{{CONCORRENTE_2}} (2º)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-label">Posição</td>
+          <td>{{POSICAO}}º</td>
+          <td>1º</td>
+          <td>2º</td>
+        </tr>
+        <tr>
+          <td class="col-label">Avaliações</td>
+          <td>{{NUMERO_AVALIACOES}}</td>
+          <td>{{CONCORRENTE_1_AVALIACOES}}</td>
+          <td>{{CONCORRENTE_2_AVALIACOES}}</td>
+        </tr>
+        <tr>
+          <td class="col-label">Nota</td>
+          <td>{{NOTA_ATUAL}}</td>
+          <td>{{CONCORRENTE_1_NOTA}}</td>
+          <td>{{CONCORRENTE_2_NOTA}}</td>
+        </tr>
+        <tr>
+          <td class="col-label">Fotos publicadas</td>
+          <td>{{NUMERO_FOTOS}}</td>
+          <td>{{CONCORRENTE_1_FOTOS}}</td>
+          <td>{{CONCORRENTE_2_FOTOS}}</td>
+        </tr>
+        <tr>
+          <td class="col-label">Fotos no último mês</td>
+          <td>0</td>
+          <td>{{CONCORRENTE_1_FOTOS_ULT_MES}}</td>
+          <td>{{CONCORRENTE_2_FOTOS_ULT_MES}}</td>
+        </tr>
+        <tr>
+          <td class="col-label">Postagens no último trimestre</td>
+          <td>{{POSTAGENS_ULTIMO_TRIMESTRE}}</td>
+          <td>{{CONCORRENTE_1_POSTS}}</td>
+          <td>{{CONCORRENTE_2_POSTS}}</td>
+        </tr>
+        <tr>
+          <td class="col-label">% avaliações respondidas</td>
+          <td>{{PERCENT_RESPONDIDAS}}%</td>
+          <td>{{CONCORRENTE_1_PERCENT_RESP}}</td>
+          <td>{{CONCORRENTE_2_PERCENT_RESP}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="body-text body-text--sm italic body-text--cinza mt-12">
+      O pessoal que procura {{PALAVRA_CHAVE_PRINCIPAL}} em Pará de Minas vê o perfil deles primeiro, antes do seu.
+    </p>
+  </div>
+
+
+  <!-- ── 4. PLANO DE AÇÃO — 11 ÁREAS ──────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">4. Plano de ação — 11 áreas de intervenção</h2>
+    <p class="body-text body-text--sm">O trabalho se organiza em 11 áreas técnicas, cada uma responsável por uma camada de atuação sobre o perfil. As áreas 1 a 5 são fundação operacional. As áreas 6 a 11 são camadas de inteligência aplicada — observação de mercado, inteligência geográfica, otimização pra IA do Google, atribuição de receita, construção de autoridade externa e relacionamento técnico contínuo.</p>
+
+    <div class="areas-list">
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">1.</span> Auditoria e linha de base</p>
+        <p class="body-text body-text--sm body-text--cinza">Fotografia técnica inicial do perfil em 42 pontos de verificação. Serve de baseline pra medir evolução ao longo do contrato e fundamenta todas as decisões seguintes.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">2.</span> Conteúdo e postagens</p>
+        <p class="body-text body-text--sm body-text--cinza">Publicações regulares no perfil que sinalizam atividade pro Google e informam quem procura. Frequência e formato variam conforme o plano contratado.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">3.</span> Fotos e mídia</p>
+        <p class="body-text body-text--sm body-text--cinza">Upload e renomeação técnica de fotos com palavra-chave, geolocalização nos metadados e cobertura equilibrada de categorias visuais do negócio.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">4.</span> Reputação e avaliações</p>
+        <p class="body-text body-text--sm body-text--cinza">Resposta ativa a toda avaliação, solicitação estratégica de avaliações novas e construção de nota elevada com consistência de tom e palavra-chave nas respostas.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">5.</span> Palavras-chave e intenção de busca</p>
+        <p class="body-text body-text--sm body-text--cinza">Pesquisa e inserção das palavras que o pessoal usa pra procurar {{SERVICO_PRINCIPAL}} em Pará de Minas, inseridas nos campos corretos do perfil.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">6.</span> Monitoramento de competição</p>
+        <p class="body-text body-text--sm body-text--cinza">Observação ativa dos concorrentes diretos pra identificar o que eles estão fazendo e o que você pode fazer melhor. Inclui comparativo periódico de posição e atividade.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">7.</span> Inteligência geográfica</p>
+        <p class="body-text body-text--sm body-text--cinza">Mapa de ranking por ponto geográfico da cidade, pra identificar em quais bairros o perfil aparece bem e em quais está invisível.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">8.</span> Otimização pra IA do Google (GEO)</p>
+        <p class="body-text body-text--sm body-text--cinza">Estruturação de dados pra aparecer nas respostas geradas por IA do Google — o novo primeiro lugar em buscas complexas por voz e texto.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">9.</span> Atribuição de receita</p>
+        <p class="body-text body-text--sm body-text--cinza">Rastreamento da jornada "viu no Maps → virou cliente → gerou receita" com UTMs e integração Analytics. Você sabe quantos clientes o Maps gerou de verdade.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">10.</span> Autoridade externa (citações)</p>
+        <p class="body-text body-text--sm body-text--cinza">Cadastro em diretórios locais e implementação de schema LocalBusiness no site, construindo sinais externos de autoridade que o Google usa como fator de ranking.</p>
+      </div>
+
+      <div class="area-item">
+        <p class="area-name"><span class="area-num">11.</span> Relacionamento técnico</p>
+        <p class="body-text body-text--sm body-text--cinza">Canal contínuo entre você e a Nitai Lab pra consultas estratégicas, dúvidas operacionais e orientação durante o contrato.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 5. OPÇÕES DE IMPLEMENTAÇÃO ───────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">5. Opções de implementação</h2>
+    <p class="body-text body-text--sm">As 11 áreas podem ser implementadas em 3 profundidades crescentes. A Opção A trata das 5 primeiras áreas em nível operacional. A Opção B adiciona 3 camadas de inteligência (áreas 1–5 aprofundadas + 6 e 9 parciais). A Opção C executa as 11 áreas com profundidade analítica completa. A recomendação técnica pra {{NOME_DO_NEGOCIO}} está ao final desta seção.</p>
+
+    <table class="plans-table">
+      <thead>
+        <tr>
+          <th class="col-area">Área</th>
+          <th>Opção A — Essencial</th>
+          <th class="col-b">Opção B — Profissional</th>
+          <th>Opção C — Performance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-area">1. Auditoria e linha de base</td>
+          <td>Auditoria em 42 pontos. Retrato do que tá certo e errado.</td>
+          <td class="col-b">+ Análise competitiva contra 3 vizinhos diretos. Você vê o que o vencedor faz que você não faz.</td>
+          <td>+ Benchmark contra 5 concorrentes + mapeamento de 30 palavras-chave ainda não exploradas pelo vencedor. Campo de batalha completo.</td>
+        </tr>
+        <tr>
+          <td class="col-area">2. Conteúdo e postagens</td>
+          <td>1 post por semana sobre serviço, produto ou oferta.</td>
+          <td class="col-b">2 posts por semana + calendário editorial mensal + medição do que gerou mais ação (clique, chamada, rota).</td>
+          <td>3 posts por semana + sazonalidade do nicho + eventos de Pará de Minas + teste A/B de texto + horário otimizado pelo dado de quando seu público procura.</td>
+        </tr>
+        <tr>
+          <td class="col-area">3. Fotos e mídia</td>
+          <td>15 fotos iniciais, nomes arrumados. Sem reposição mensal.</td>
+          <td class="col-b">4 fotos novas por mês, renomeadas com palavra-chave + coordenadas nos metadados (EXIF). Cada foto alimenta o SEO local.</td>
+          <td>8 fotos novas por mês com estudo prévio de quais categorias estão rankeando no seu nicho + ajuste mensal da capa + cobertura interior/exterior/equipe/entrega completa.</td>
+        </tr>
+        <tr>
+          <td class="col-area">4. Reputação e avaliações</td>
+          <td>Resposta em até 48 horas úteis. Monitoramento diário.</td>
+          <td class="col-b">Resposta personalizada com palavra-chave embutida + solicitação ativa pros clientes certos, sem encheção. A avaliação vira ativo de ranking.</td>
+          <td>Análise semântica do que elogiam e criticam + plano mensal de correção pros pontos fracos recorrentes + monitoramento de sentimento pra detectar queda antes de virar crise.</td>
+        </tr>
+        <tr>
+          <td class="col-area">5. Palavras-chave e intenção</td>
+          <td>10 palavras-chave locais colocadas na descrição.</td>
+          <td class="col-b">Pesquisa ativa de 25 palavras-chave + volume mensal + ordenação por oportunidade.</td>
+          <td>60 palavras-chave incluindo long tail + classificação por intenção (informacional/comercial/transacional) + mapeamento específico pra AI Overviews.</td>
+        </tr>
+        <tr>
+          <td class="col-area">6. Monitoramento de competição</td>
+          <td style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td class="col-b">Observação quinzenal de 3 concorrentes. O que postam, quantas avaliações pegam, se lançaram promoção.</td>
+          <td>Observação semanal de 5 concorrentes + comparativo de ranking por palavra-chave + alerta quando algum muda de estratégia.</td>
+        </tr>
+        <tr>
+          <td class="col-area">7. Inteligência geográfica</td>
+          <td style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td class="col-b" style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td>Heatmap mensal: mapa de 9 pontos da cidade mostrando onde o perfil aparece em 1º, 5º, 20º. Você descobre em que bairro tá invisível.</td>
+        </tr>
+        <tr>
+          <td class="col-area">8. Otimização pra IA do Google</td>
+          <td style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td class="col-b" style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td>Estruturação pra AI Overviews do Google — aparecer quando perguntam "melhor {{SERVICO_PRINCIPAL}} em Pará de Minas".</td>
+        </tr>
+        <tr>
+          <td class="col-area">9. Atribuição de receita</td>
+          <td>8 métricas nativas do Google (chamadas, rotas, cliques, visualizações).</td>
+          <td class="col-b">15 métricas + recomendação mensal de 1 ação específica pro mês seguinte.</td>
+          <td>Dashboard com atribuição completa: quantos clientes chegaram pelo Maps, quanto agendaram, quanto gastaram. UTMs + Google Analytics integrados.</td>
+        </tr>
+        <tr>
+          <td class="col-area">10. Autoridade externa</td>
+          <td style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td class="col-b" style="color:var(--medio);font-style:italic;">Não incluso.</td>
+          <td>Cadastro em 15 diretórios locais (Apontador, TeleListas, GuiaMais e outros) + schema LocalBusiness no site + construção de autoridade local.</td>
+        </tr>
+        <tr>
+          <td class="col-area">11. Relacionamento técnico</td>
+          <td>Checklist de boas práticas pra você não atrapalhar o trabalho.</td>
+          <td class="col-b">Checklist + reunião de setup de 45 min + material pra você responder casos que caem direto no seu celular.</td>
+          <td>Tudo do anterior + reunião de performance a cada 60 dias + canal direto comigo no WhatsApp pra dúvidas estratégicas.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Tabela de preços -->
+    <table class="price-table mt-20">
+      <thead>
+        <tr>
+          <th>Opção</th>
+          <th>Setup único</th>
+          <th>Mensalidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A — Essencial</td>
+          <td>R$ 497</td>
+          <td>R$ 397/mês</td>
+        </tr>
+        <tr class="row-rec">
+          <td><strong>B — Profissional</strong></td>
+          <td class="price-val">R$ 697</td>
+          <td class="price-val">R$ 497/mês</td>
+        </tr>
+        <tr>
+          <td>C — Performance</td>
+          <td>R$ 997</td>
+          <td>R$ 797/mês</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Recomendação técnica -->
+    <div class="rec-box">
+      <p><strong>Recomendação técnica: Opção B (Profissional).</strong></p>
+      <p class="mt-8">Justificativa: o perfil da {{NOME_DO_NEGOCIO}} tem fundamentos operacionais pendentes (áreas 1–5) mas também apresenta concorrentes diretos em atividade constante. A Opção A resolve a base mas não dá instrumentos pra acompanhar concorrência. A Opção C inclui camadas — heatmap, IA, atribuição de receita, citações externas — que fazem sentido em operação amadurecida; pra {{NOME_DO_NEGOCIO}} hoje, seria investimento sem retorno equivalente. A Opção B é equilibrada pro momento do negócio.</p>
+    </div>
+  </div>
+
+
+  <!-- ── 6. FORMAS DE PAGAMENTO ────────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">6. Formas de pagamento</h2>
+    <p class="body-text body-text--sm">Qualquer uma das três opções pode ser paga em três modelos diferentes:</p>
+
+    <table class="data-table mt-16">
+      <thead>
+        <tr>
+          <th>Modelo</th>
+          <th>Descrição</th>
+          <th>Vantagem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-label">PIX à vista (6 meses)</td>
+          <td>Setup + 6 mensalidades de uma vez</td>
+          <td>15% de desconto sobre valor total</td>
+        </tr>
+        <tr>
+          <td class="col-label">Cartão em 6 parcelas</td>
+          <td>Setup + 6 mensalidades parceladas sem juros</td>
+          <td>Cai na fatura normal</td>
+        </tr>
+        <tr>
+          <td class="col-label">PIX anual (12 meses)</td>
+          <td>Setup + 12 mensalidades via PIX</td>
+          <td>20% de desconto + bônus: diagnóstico operacional pontual ou relatório comparativo trimestral</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ── 7. CASO DE REFERÊNCIA ─────────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">7. Caso de referência</h2>
+    <p class="body-text body-text--sm">Caso documentado de operação anterior com metodologia equivalente (executada em Belo Horizonte/MG, nicho saúde — dermatologia). Resultado medido e registrado:</p>
+
+    <div class="proof-grid mt-16">
+      <div>
+        <img src="../assets/depoimento-poli-01.jpeg" alt="Dra. Poli Brito — Dermatologista" class="proof-img">
+      </div>
+      <div class="proof-metrics">
+        <table class="data-table">
+          <thead>
+            <tr><th>Métrica</th><th>Antes</th><th>Depois (3 meses)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="col-label">Posição no ranking</td><td>81º</td><td><strong>28º</strong></td></tr>
+            <tr><td class="col-label">Nota média</td><td>3.2</td><td><strong>4.7</strong></td></tr>
+          </tbody>
+        </table>
+        <p class="proof-quote mt-12">
+          "Saí do 81º pro 28º em três meses. A nota geral foi de 3,2 pra 4,7 e parei de ouvir cliente falando que não me achava no Google."
+        </p>
+        <p class="proof-author mt-8">Dra. Poli Brito · Dermatologista · Belo Horizonte/MG</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 8. GARANTIA TÉCNICA ───────────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">8. Garantia técnica de 120 dias</h2>
+    <div class="sec--garantia">
+
+      <p class="body-text body-text--sm">Em caso de não evolução mensurável do perfil em 120 dias a partir da data de início, o valor integral pago (setup + mensalidades) é devolvido. Os critérios de aferição estão abaixo — basta <strong>UM deles</strong> ser atingido pra que a garantia não seja acionada:</p>
+
+      <div class="garantia-items mt-20">
+        <div class="garantia-item">
+          <span class="garantia-num">1.</span>
+          <p class="garantia-text"><strong>Posição:</strong> subida de 5 ou mais posições pra palavra-chave principal definida em ata de setup.</p>
+        </div>
+        <div class="garantia-item">
+          <span class="garantia-num">2.</span>
+          <p class="garantia-text"><strong>Visibilidade:</strong> aumento mínimo de 40% nas visualizações do perfil, comparando os 30 dias anteriores ao início.</p>
+        </div>
+        <div class="garantia-item">
+          <span class="garantia-num">3.</span>
+          <p class="garantia-text"><strong>Ação:</strong> aumento mínimo de 30% em ligações recebidas + solicitações de rota + mensagens, na mesma comparação de baseline.</p>
+        </div>
+      </div>
+
+      <p class="body-text body-text--sm mt-16"><strong>Condições técnicas da garantia:</strong></p>
+      <ul class="cond-list mt-8">
+        <li>Baseline é capturada no dia 1, antes de qualquer alteração, e assinada em ata pelas duas partes.</li>
+        <li>O cliente precisa fornecer acesso ao perfil no prazo de 7 dias após contratação. Sem acesso, o relógio de 120 dias não começa.</li>
+        <li>O cliente não pode alterar o perfil em paralelo sem comunicação prévia. Alterações externas podem invalidar a baseline.</li>
+        <li>A garantia não se aplica a suspensões do perfil por ação do próprio cliente no Google.</li>
+        <li>O acionamento é feito por mensagem direta ao WhatsApp {{TELEFONE}} no dia 121 ou posterior.</li>
+      </ul>
+
+      <p class="body-text body-text--xs italic body-text--cinza mt-16">
+        120 dias porque é o prazo médio de processamento de mudanças estruturais pelo algoritmo do Google. Garantir antes disso seria me enganar ou enganar você.
+      </p>
+
+    </div>
+  </div>
+
+
+  <!-- ── 9. COMO PROCEDER ──────────────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">9. Como proceder</h2>
+    <p class="body-text body-text--sm">Caso deseje contratar, os passos são:</p>
+
+    <ol class="steps-list mt-16">
+      <li class="step-item">
+        <span class="step-num">1.</span>
+        <span class="step-text">Enviar mensagem no WhatsApp <strong>{{TELEFONE}}</strong> informando a opção escolhida (A, B ou C) e a forma de pagamento.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">2.</span>
+        <span class="step-text">Recebimento do contrato assinado (2 páginas, já preparado).</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">3.</span>
+        <span class="step-text">Confirmação do primeiro pagamento.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">4.</span>
+        <span class="step-text">Início dos trabalhos em até 48 horas úteis após a confirmação.</span>
+      </li>
+      <li class="step-item">
+        <span class="step-num">5.</span>
+        <span class="step-text">Primeiro relatório mensal: <strong>{{DATA_PRIMEIRO_RELATORIO}}</strong>.</span>
+      </li>
+    </ol>
+  </div>
+
+
+  <!-- ── 10. PERGUNTAS FREQUENTES ──────────────────── -->
+  <div class="sec">
+    <h2 class="sec-title">10. Perguntas frequentes</h2>
+
+    <div class="faq-list">
+      <div>
+        <div class="faq-q">Já pago alguém pra mexer no meu Google. Posso trocar?</div>
+        <p class="faq-a">Pode. Basta encerrar o contrato atual na data combinada e assumimos a partir daí. Transição sem interrupção.</p>
+      </div>
+      <div>
+        <div class="faq-q">E se eu abrir uma segunda unidade?</div>
+        <p class="faq-a">Segunda unidade tem setup com 50% de desconto e mensalidade integral. Perfis separados, gestão integrada no mesmo contrato.</p>
+      </div>
+      <div>
+        <div class="faq-q">Vocês mexem no meu site e Instagram também?</div>
+        <p class="faq-a">Não entra nesse escopo. Mas o trabalho no Google puxa movimento pro site sozinho. Gestão de redes é contratação à parte, se fizer sentido depois.</p>
+      </div>
+      <div>
+        <div class="faq-q">Em quanto tempo vejo resultado?</div>
+        <p class="faq-a">Primeiro movimento técnico: 30 dias. Mudança visível no ranking: 60 a 90 dias. Consolidação: 120 dias. Esse é o tempo do próprio algoritmo do Google — não é demora da nossa parte.</p>
+      </div>
+      <div>
+        <div class="faq-q">E se meu concorrente direto também contratar?</div>
+        <p class="faq-a">Atendemos no máximo um negócio por categoria e bairro. Quem chega primeiro tem preferência. Exclusividade de categoria por região enquanto o cliente estiver ativo.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── RODAPÉ INSTITUCIONAL ──────────────────────── -->
+  <footer class="footer">
+    <div class="footer-name">Nitai Morais</div>
+    <div class="footer-sub">Nitai Lab · Pará de Minas, MG</div>
+    <div class="footer-contact">{{TELEFONE}} · nitai@nitailab.com.br · <a href="https://nitailab.com.br" style="color:var(--cinza);text-decoration:none;">nitailab.com.br</a></div>
+
+    <hr class="footer-hr">
+
+    <div class="footer-brand">Nitai Lab</div>
+    <div class="footer-legal">
+      Documento preparado em {{DATA}} para {{NOME_DO_NEGOCIO}}. Referência NL-{{ANO}}-{{HASH_NUMERICO}}. Validade: {{DATA_EXPIRACAO}}.
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
