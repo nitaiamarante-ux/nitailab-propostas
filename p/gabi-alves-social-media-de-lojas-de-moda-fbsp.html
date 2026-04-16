@@ -874,6 +874,71 @@
       border: none; border-radius: 4px; cursor: pointer; text-align: center; max-width: 240px;
     }
     @media print { .print-cta { display: none !important; } }
+
+    /* ── Mobile ─────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      /* Pack-cards: empilhar em 1 coluna */
+      .pack-cards {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+      /* Badge do Pacote B precisa de espaço acima */
+      .pack-card--featured {
+        margin-top: 14px;
+      }
+      /* Tabela de pacotes (plans-table) ganha scroll horizontal em mobile */
+      .plans-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 16px -8px;
+        padding: 0 8px;
+      }
+      .plans-table {
+        min-width: 720px;
+      }
+      .plans-table th, .plans-table td {
+        font-size: 12px;
+        padding: 8px 6px;
+      }
+      .plans-table td.col-area {
+        width: auto;
+        min-width: 120px;
+      }
+      /* Tabelas genéricas (data-table) também ganham scroll quando necessário */
+      .data-table {
+        font-size: 12.5px;
+      }
+      .data-table th, .data-table td {
+        padding: 8px 6px;
+        word-break: break-word;
+      }
+      /* Seção (sec) com padding reduzido */
+      .sec {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      /* Título das seções menor */
+      .sec-title {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+      /* Pocket-style body-text um pouco menor */
+      .body-text {
+        font-size: 14px;
+      }
+      .body-text--sm {
+        font-size: 13px;
+      }
+      /* Score destaque — não estourar */
+      .score-destaque {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .score-numero {
+        font-size: 2em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1084,11 +1149,11 @@
         </tr>
         <tr>
           <td class="col-metric">Avaliações sem resposta</td>
-          <td>—</td>
+          <td>0 (0% do total)</td>
         </tr>
         <tr>
           <td class="col-metric">Avaliações negativas visíveis (1 a 3★)</td>
-          <td>—</td>
+          <td>0</td>
         </tr>
         <tr>
           <td class="col-metric">Nota média</td>
@@ -1096,7 +1161,7 @@
         </tr>
         <tr>
           <td class="col-metric">Data da última foto</td>
-          <td>—</td>
+          <td>novembro de 2025</td>
         </tr>
         <tr>
           <td class="col-metric">Total de postagens no perfil</td>
@@ -1114,8 +1179,8 @@
     <p class="body-text body-text--sm">Cada área mede o que leva o perfil a aparecer primeiro. Os pesos seguem o <strong>Whitespark 2026 — Local Search Ranking Factors</strong>, estudo consolidado com 47 especialistas top do setor. A soma fecha em 100.</p>
 
     <div class="score-destaque mt-20">
-      <div class="score-numero"><span class="score-val">—</span><span class="score-max">/100</span></div>
-      <div class="score-faixa">—</div>
+      <div class="score-numero"><span class="score-val">25</span><span class="score-max">/100</span></div>
+      <div class="score-faixa">Perfil crítico — invisível pra quem busca</div>
     </div>
 
     <table class="data-table mt-20">
@@ -1128,14 +1193,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>Cadastro e atividade no Google</td><td style="text-align:center;">34</td><td style="text-align:center;"><strong>—</strong></td><td>—</td></tr>
-        <tr><td>Avaliações e reputação</td><td style="text-align:center;">21</td><td style="text-align:center;"><strong>—</strong></td><td>—</td></tr>
-        <tr><td>Site próprio (se houver)</td><td style="text-align:center;">16</td><td style="text-align:center;"><strong>—</strong></td><td>Sem site próprio cadastrado — 16 pontos disponíveis ao criar um e aplicar a camada técnica.</td></tr>
-        <tr><td>Estímulos à ação do cliente</td><td style="text-align:center;">10</td><td style="text-align:center;"><strong>—</strong></td><td>—</td></tr>
-        <tr><td>Autoridade externa</td><td style="text-align:center;">9</td><td style="text-align:center;"><strong>—</strong></td><td>—</td></tr>
-        <tr><td>Presença em outros diretórios</td><td style="text-align:center;">6</td><td style="text-align:center;"><strong>—</strong></td><td>—</td></tr>
-        <tr><td>Redes sociais</td><td style="text-align:center;">4</td><td style="text-align:center;"><strong>—</strong></td><td>—</td></tr>
-        <tr style="font-weight:600; background:var(--offwhite,#f7f5f1);"><td>Total</td><td style="text-align:center;">100</td><td style="text-align:center;"><strong>—</strong></td><td></td></tr>
+        <tr><td>Cadastro e atividade no Google</td><td style="text-align:center;">34</td><td style="text-align:center;"><strong>16</strong></td><td>Perfil com fundamentos no lugar. A camada de atividade recorrente — que move posição semana a semana — ainda não está ativa.</td></tr>
+        <tr><td>Avaliações e reputação</td><td style="text-align:center;">21</td><td style="text-align:center;"><strong>5</strong></td><td>Reputação em construção, com sinais de cuidado. Volume e ritmo comparativos ao segmento ainda frágeis.</td></tr>
+        <tr><td>Site próprio (se houver)</td><td style="text-align:center;">16</td><td style="text-align:center;"><strong>0</strong></td><td>Sem site próprio cadastrado — 16 pontos disponíveis ao criar um e aplicar a camada técnica.</td></tr>
+        <tr><td>Estímulos à ação do cliente</td><td style="text-align:center;">10</td><td style="text-align:center;"><strong>4</strong></td><td>Parte visual cumpre. A alavanca de ativação direta — o gatilho que move do olhar pro clique — fica pra camada seguinte.</td></tr>
+        <tr><td>Autoridade externa</td><td style="text-align:center;">9</td><td style="text-align:center;"><strong>0</strong></td><td>Eixo não avaliado nos sinais que o diagnóstico automático coleta. Medição de backlinks, menções na imprensa e links externos entra na auditoria técnica do onboarding.</td></tr>
+        <tr><td>Presença em outros diretórios</td><td style="text-align:center;">6</td><td style="text-align:center;"><strong>0</strong></td><td>Presença em diretórios locais não mapeada no diagnóstico automático. Verificação de cadastro em Apontador, TeleListas, GuiaMais e correlatos entra na auditoria técnica.</td></tr>
+        <tr><td>Redes sociais</td><td style="text-align:center;">4</td><td style="text-align:center;"><strong>0</strong></td><td>Redes sociais não detectadas vinculadas ao perfil.</td></tr>
+        <tr style="font-weight:600; background:var(--offwhite,#f7f5f1);"><td>Total</td><td style="text-align:center;">100</td><td style="text-align:center;"><strong>25</strong></td><td></td></tr>
       </tbody>
     </table>
 
@@ -1255,6 +1320,7 @@
 
     <p class="body-text body-text--sm body-text--cinza mt-16">Detalhamento por frente — o que cada pacote entrega em cada uma das 11 frentes:</p>
 
+    <div class="plans-table-wrapper">
     <table class="plans-table">
       <thead>
         <tr>
@@ -1333,6 +1399,7 @@
         </tr>
       </tbody>
     </table>
+    </div><!-- /.plans-table-wrapper -->
 
     <!-- Tabela de preços -->
     <p class="body-text body-text--sm mt-24"><strong>Investimento por pacote</strong> (mensalidade em 6 parcelas no semestral, 12 no anual):</p>
