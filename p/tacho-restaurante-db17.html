@@ -1480,12 +1480,32 @@
     CFG.endpoint = null; // não publicado ainda — só loga local
   }
 
-  // Session único por aba
-  let sid = sessionStorage.getItem("nl_sid");
-  if (!sid) {
+  // Session ID — nova sessão se: reload da página OU >30min de inatividade
+  const SESSION_TIMEOUT_MS = 30 * 60 * 1000;
+  const navType = (performance.getEntriesByType("navigation")[0] || {}).type;
+  const storedSid = localStorage.getItem("nl_sid");
+  const storedTs = parseInt(localStorage.getItem("nl_sid_ts") || "0", 10);
+  const ageMs = Date.now() - storedTs;
+  let sid;
+  if (storedSid && navType !== "reload" && ageMs < SESSION_TIMEOUT_MS) {
+    sid = storedSid;  // continua mesma sessão
+  } else {
     sid = Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
-    sessionStorage.setItem("nl_sid", sid);
+    localStorage.setItem("nl_sid", sid);
   }
+  localStorage.setItem("nl_sid_ts", String(Date.now()));
+
+  // Tempo ATIVO (apenas quando documento visível)
+  let activeMs = 0;
+  let activeStart = document.visibilityState === "visible" ? Date.now() : null;
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden" && activeStart) {
+      activeMs += Date.now() - activeStart;
+      activeStart = null;
+    } else if (document.visibilityState === "visible" && !activeStart) {
+      activeStart = Date.now();
+    }
+  });
 
   const EVENTS_BUF = [];
   const SCROLL_MARKS = {};
@@ -1608,7 +1628,26 @@
   // ── 6. tentativa de imprimir/salvar
   window.addEventListener("beforeprint", () => push("print_attempt"));
 
-  // ── 7. antes de sair
+  // ── 7. hover nos cards de pacote (A/B/C) — > 3s gera evento
+  document.querySelectorAll(".pack-card").forEach(card => {
+    const name = (card.querySelector(".pack-card-name") || card).textContent.trim().slice(0, 30);
+    let hoverStart = null;
+    const onEnter = () => { hoverStart = Date.now(); };
+    const onLeave = () => {
+      if (hoverStart) {
+        const ms = Date.now() - hoverStart;
+        if (ms >= 3000) push("pack_hover", {pack: name, ms});
+        hoverStart = null;
+      }
+    };
+    card.addEventListener("mouseenter", onEnter);
+    card.addEventListener("mouseleave", onLeave);
+    // Mobile — touch conta como hover enquanto o dedo tá em cima
+    card.addEventListener("touchstart", onEnter, {passive: true});
+    card.addEventListener("touchend", onLeave);
+  });
+
+  // ── 8. antes de sair
   let sent = false;
   function onExit() {
     if (sent) return;
@@ -1616,8 +1655,10 @@
     if (lastSectionId) {
       push("section_exit", {section: lastSectionId, dwell_ms: Date.now() - lastSectionEnter});
     }
+    if (activeStart) activeMs += Date.now() - activeStart;
     push("session_end", {
       total_ms: Date.now() - CFG.loadedAt,
+      active_ms: activeMs,  // tempo com aba em foco
       max_scroll_pct: Math.max(0, ...Object.keys(SCROLL_MARKS).map(Number)),
     });
     flush();
