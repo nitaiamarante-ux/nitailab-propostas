@@ -877,59 +877,78 @@
 
     /* ── Mobile ─────────────────────────────────────────── */
     @media (max-width: 700px) {
-      /* Pack-cards: empilhar em 1 coluna */
-      .pack-cards {
-        grid-template-columns: 1fr !important;
-        gap: 24px;
+
+      /* ── Cabeçalho de documento ─────────────────────── */
+      .doc-header {
+        padding-left: 14px;
+        padding-right: 14px;
       }
-      /* Badge do Pacote B precisa de espaço acima */
-      .pack-card--featured {
-        margin-top: 14px;
+
+      /* ── Faixa de serviço ───────────────────────────── */
+      .service-banner {
+        padding-left: 14px;
+        padding-right: 14px;
       }
-      /* Tabela de pacotes (plans-table) ganha scroll horizontal em mobile */
-      .plans-table-wrapper {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        margin: 16px -8px;
-        padding: 0 8px;
+      .service-banner-name {
+        font-size: 26px;
       }
-      .plans-table {
-        min-width: 720px;
-      }
-      .plans-table th, .plans-table td {
+      .service-banner-sub {
         font-size: 12px;
-        padding: 8px 6px;
       }
-      .plans-table td.col-area {
-        width: auto;
-        min-width: 120px;
+
+      /* ── Capa ───────────────────────────────────────── */
+      .capa {
+        padding-left: 14px;
+        padding-right: 14px;
       }
-      /* Tabelas genéricas (data-table) também ganham scroll quando necessário */
-      .data-table {
-        font-size: 12.5px;
+      .capa-title {
+        font-size: 24px;
+        line-height: 1.25;
       }
-      .data-table th, .data-table td {
-        padding: 8px 6px;
-        word-break: break-word;
+      /* Grid 2 colunas da capa → 1 coluna em mobile */
+      .capa-meta {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
       }
-      /* Seção (sec) com padding reduzido */
+
+      /* ── Seções ─────────────────────────────────────── */
       .sec {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: 14px;
+        padding-right: 14px;
       }
       /* Título das seções menor */
       .sec-title {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1.2;
       }
-      /* Pocket-style body-text um pouco menor */
+      .sec-title--sm {
+        font-size: 15px;
+      }
+
+      /* ── Caixa da garantia ──────────────────────────── */
+      /* margin 32px lateral + sec padding 14px = muito apertado */
+      .sec--garantia {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      /* ── Rodapé ─────────────────────────────────────── */
+      .footer {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      /* ── Textos ─────────────────────────────────────── */
       .body-text {
         font-size: 14px;
       }
       .body-text--sm {
         font-size: 13px;
       }
-      /* Score destaque — não estourar */
+
+      /* ── Score destaque ─────────────────────────────── */
       .score-destaque {
         flex-direction: column;
         align-items: flex-start;
@@ -938,7 +957,210 @@
       .score-numero {
         font-size: 2em;
       }
+
+      /* ── Tabela comparativo seção 2 (4 colunas g-table) ─
+         Converte em cards empilhados por concorrente       */
+      .g-table-mobile-cards thead {
+        display: none;
+      }
+      .g-table-mobile-cards tbody tr {
+        display: block;
+        border: 1px solid var(--borda);
+        border-radius: 3px;
+        margin-bottom: 10px;
+        padding: 8px 10px;
+        background: #fff;
+      }
+      .g-table-mobile-cards tbody tr:last-child {
+        margin-bottom: 0;
+      }
+      .g-table-mobile-cards td {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 5px 0;
+        border-bottom: 1px solid var(--borda);
+        font-size: 13px;
+      }
+      .g-table-mobile-cards td:last-child {
+        border-bottom: none;
+      }
+      .g-table-mobile-cards td::before {
+        content: attr(data-label);
+        font-family: 'Urbanist', sans-serif;
+        font-weight: 500;
+        font-size: 11px;
+        color: var(--cinza);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        flex-shrink: 0;
+        margin-right: 10px;
+        padding-top: 1px;
+        max-width: 45%;
+      }
+      .g-table-mobile-cards td.col-label,
+      .g-table-mobile-cards td.g-col-cliente {
+        background: none;
+      }
+      /* Destaque da linha do cliente */
+      .g-table-mobile-cards tr.row-cliente-mobile {
+        background: var(--nude) !important;
+        border-color: var(--carvao);
+      }
+
+      /* ── Tabela de score (seção 3.2) — 4 colunas → cards ─ */
+      .score-table-mobile thead {
+        display: none;
+      }
+      .score-table-mobile tbody tr {
+        display: block;
+        border: 1px solid var(--borda);
+        border-radius: 3px;
+        margin-bottom: 8px;
+        padding: 8px 10px;
+        background: #fff;
+      }
+      .score-table-mobile tbody tr:last-child {
+        background: var(--offwhite);
+        border-color: var(--carvao);
+      }
+      .score-table-mobile td {
+        display: block;
+        padding: 3px 0;
+        border-bottom: none;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .score-table-mobile td[data-label="Área"] {
+        font-family: 'Urbanist', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        color: var(--carvao);
+        padding-bottom: 4px;
+        border-bottom: 1px solid var(--borda);
+        margin-bottom: 4px;
+      }
+      .score-table-mobile td[data-label="Máx"] {
+        font-size: 11px;
+        color: var(--cinza);
+      }
+      .score-table-mobile td[data-label="Nota"] {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .score-table-mobile td[data-label="Observação"] {
+        font-size: 12px;
+        color: var(--cinza);
+        line-height: 1.5;
+      }
+      .score-table-mobile td::before {
+        content: attr(data-label) ': ';
+        font-family: 'Urbanist', sans-serif;
+        font-weight: 500;
+        font-size: 10px;
+        color: var(--medio);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .score-table-mobile td[data-label="Área"]::before {
+        display: none;
+      }
+
+      /* ── Pack-cards: empilhar em 1 coluna ───────────── */
+      .pack-cards {
+        grid-template-columns: 1fr !important;
+        gap: 24px;
+      }
+      /* Badge do Pacote B precisa de espaço acima */
+      .pack-card--featured {
+        margin-top: 14px;
+      }
+
+      /* ── Tabela de pacotes (plans-table) — scroll horizontal ─ */
+      .plans-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -14px;
+        margin-right: -14px;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+      .plans-table {
+        min-width: 680px;
+      }
+      .plans-table th, .plans-table td {
+        font-size: 12px;
+        padding: 8px 6px;
+      }
+      .plans-table td.col-area {
+        width: auto;
+        min-width: 110px;
+        max-width: 110px;
+        font-size: 11px;
+      }
+
+      /* ── Tabela de preços ───────────────────────────── */
+      .price-table th, .price-table td {
+        font-size: 13px;
+        padding: 8px 6px;
+        word-break: break-word;
+      }
+      .price-table .price-val {
+        font-size: 14px;
+      }
+
+      /* ── Tabelas genéricas (data-table) ─────────────── */
+      .data-table {
+        font-size: 12.5px;
+      }
+      .data-table th, .data-table td {
+        padding: 7px 6px;
+        word-break: break-word;
+      }
+
+      /* ── maps-mock ──────────────────────────────────── */
+      .maps-mock {
+        max-width: 100%;
+      }
+      .maps-mock__result-name {
+        font-size: 12px;
+        word-break: break-word;
+      }
+      /* badge-posicao pode ficar espremido */
+      .badge-posicao {
+        font-size: 8px;
+        padding: 2px 5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* ── Seção 7: proof-grid já vai pra 1 coluna pelo media 640px ─ */
+      /* Mas a imagem pode ficar grande demais */
+      .proof-img {
+        max-width: 100%;
+      }
+
     }
+
+    /* ── Mobile muito pequeno (≤ 400px) ─────────────────── */
+    @media (max-width: 400px) {
+      .service-banner-name {
+        font-size: 22px;
+      }
+      .capa-title {
+        font-size: 21px;
+      }
+      .sec-title {
+        font-size: 17px;
+      }
+      .body-text {
+        font-size: 13px;
+      }
+      .body-text--sm {
+        font-size: 12px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1025,7 +1247,7 @@
     <h2 class="sec-title">2. Comparativo com a concorrência</h2>
     <p class="body-text body-text--sm">A tabela abaixo compara a Gabi Alves | Social Media de Lojas de Moda com os 2 concorrentes que estão na frente no Google. Dados públicos, vistos direto no Google Maps em 16/04/2026.</p>
 
-    <table class="data-table g-table mt-16">
+    <table class="data-table g-table g-table-mobile-cards mt-16">
       <thead>
         <tr>
           <th>Métrica</th>
@@ -1036,22 +1258,22 @@
       </thead>
       <tbody>
         <tr>
-          <td class="col-label"><span class="row-pin"><svg class="pin-svg" width="12" height="14" viewBox="0 0 28 38" fill="none"><path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#EA4335"/><circle cx="14" cy="14" r="6" fill="white"/></svg>Posição</span></td>
-          <td class="g-col-cliente"><strong>17º</strong></td>
-          <td>1º</td>
-          <td>2º</td>
+          <td class="col-label" data-label="Métrica"><span class="row-pin"><svg class="pin-svg" width="12" height="14" viewBox="0 0 28 38" fill="none"><path d="M14 0C6.268 0 0 6.268 0 14C0 24.5 14 38 14 38C14 38 28 24.5 28 14C28 6.268 21.732 0 14 0Z" fill="#EA4335"/><circle cx="14" cy="14" r="6" fill="white"/></svg>Posição</span></td>
+          <td class="g-col-cliente" data-label="Gabi Alves | Social Media de Lojas de Moda"><strong>17º</strong></td>
+          <td data-label="Frog Digital Pará de Minas | Agência de Marketing Digital">1º</td>
+          <td data-label="Agência b.">2º</td>
         </tr>
         <tr>
-          <td class="col-label"><span class="row-pin"><svg class="pin-svg" width="12" height="12" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#FFCC00"/></svg>Nota média</span></td>
-          <td class="g-col-cliente">5</td>
-          <td>5</td>
-          <td>5</td>
+          <td class="col-label" data-label="Métrica"><span class="row-pin"><svg class="pin-svg" width="12" height="12" viewBox="0 0 12 12"><polygon points="6,1 7.5,4.5 11,4.8 8.5,7 9.3,10.5 6,8.5 2.7,10.5 3.5,7 1,4.8 4.5,4.5" fill="#FFCC00"/></svg>Nota média</span></td>
+          <td class="g-col-cliente" data-label="Gabi Alves | Social Media de Lojas de Moda">5</td>
+          <td data-label="Frog Digital Pará de Minas | Agência de Marketing Digital">5</td>
+          <td data-label="Agência b.">5</td>
         </tr>
         <tr>
-          <td class="col-label">Avaliações</td>
-          <td class="g-col-cliente">5</td>
-          <td>8</td>
-          <td>41</td>
+          <td class="col-label" data-label="Métrica">Avaliações</td>
+          <td class="g-col-cliente" data-label="Gabi Alves | Social Media de Lojas de Moda">5</td>
+          <td data-label="Frog Digital Pará de Minas | Agência de Marketing Digital">8</td>
+          <td data-label="Agência b.">41</td>
         </tr>
       </tbody>
     </table>
@@ -1183,7 +1405,7 @@
       <div class="score-faixa">Perfil crítico — invisível pra quem busca</div>
     </div>
 
-    <table class="data-table mt-20">
+    <table class="data-table score-table-mobile mt-20">
       <thead>
         <tr>
           <th class="col-metric">Área analisada</th>
@@ -1193,14 +1415,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>Cadastro e atividade no Google</td><td style="text-align:center;">34</td><td style="text-align:center;"><strong>16</strong></td><td>Perfil com fundamentos no lugar. A camada de atividade recorrente — que move posição semana a semana — ainda não está ativa.</td></tr>
-        <tr><td>Avaliações e reputação</td><td style="text-align:center;">21</td><td style="text-align:center;"><strong>5</strong></td><td>Reputação em construção, com sinais de cuidado. Volume e ritmo comparativos ao segmento ainda frágeis.</td></tr>
-        <tr><td>Site próprio (se houver)</td><td style="text-align:center;">16</td><td style="text-align:center;"><strong>0</strong></td><td>Sem site próprio cadastrado — 16 pontos disponíveis ao criar um e aplicar a camada técnica.</td></tr>
-        <tr><td>Estímulos à ação do cliente</td><td style="text-align:center;">10</td><td style="text-align:center;"><strong>4</strong></td><td>Parte visual cumpre. A alavanca de ativação direta — o gatilho que move do olhar pro clique — fica pra camada seguinte.</td></tr>
-        <tr><td>Autoridade externa</td><td style="text-align:center;">9</td><td style="text-align:center;"><strong>0</strong></td><td>Eixo não avaliado nos sinais que o diagnóstico automático coleta. Medição de backlinks, menções na imprensa e links externos entra na auditoria técnica do onboarding.</td></tr>
-        <tr><td>Presença em outros diretórios</td><td style="text-align:center;">6</td><td style="text-align:center;"><strong>0</strong></td><td>Presença em diretórios locais não mapeada no diagnóstico automático. Verificação de cadastro em Apontador, TeleListas, GuiaMais e correlatos entra na auditoria técnica.</td></tr>
-        <tr><td>Redes sociais</td><td style="text-align:center;">4</td><td style="text-align:center;"><strong>0</strong></td><td>Redes sociais não detectadas vinculadas ao perfil.</td></tr>
-        <tr style="font-weight:600; background:var(--offwhite,#f7f5f1);"><td>Total</td><td style="text-align:center;">100</td><td style="text-align:center;"><strong>25</strong></td><td></td></tr>
+        <tr><td data-label="Área">Cadastro e atividade no Google</td><td data-label="Máx" style="text-align:center;">34</td><td data-label="Nota" style="text-align:center;"><strong>16</strong></td><td data-label="Observação">Perfil com fundamentos no lugar. A camada de atividade recorrente — que move posição semana a semana — ainda não está ativa.</td></tr>
+        <tr><td data-label="Área">Avaliações e reputação</td><td data-label="Máx" style="text-align:center;">21</td><td data-label="Nota" style="text-align:center;"><strong>5</strong></td><td data-label="Observação">Reputação em construção, com sinais de cuidado. Volume e ritmo comparativos ao segmento ainda frágeis.</td></tr>
+        <tr><td data-label="Área">Site próprio (se houver)</td><td data-label="Máx" style="text-align:center;">16</td><td data-label="Nota" style="text-align:center;"><strong>0</strong></td><td data-label="Observação">Sem site próprio cadastrado — 16 pontos disponíveis ao criar um e aplicar a camada técnica.</td></tr>
+        <tr><td data-label="Área">Estímulos à ação do cliente</td><td data-label="Máx" style="text-align:center;">10</td><td data-label="Nota" style="text-align:center;"><strong>4</strong></td><td data-label="Observação">Parte visual cumpre. A alavanca de ativação direta — o gatilho que move do olhar pro clique — fica pra camada seguinte.</td></tr>
+        <tr><td data-label="Área">Autoridade externa</td><td data-label="Máx" style="text-align:center;">9</td><td data-label="Nota" style="text-align:center;"><strong>0</strong></td><td data-label="Observação">Eixo não avaliado nos sinais que o diagnóstico automático coleta. Medição de backlinks, menções na imprensa e links externos entra na auditoria técnica do onboarding.</td></tr>
+        <tr><td data-label="Área">Presença em outros diretórios</td><td data-label="Máx" style="text-align:center;">6</td><td data-label="Nota" style="text-align:center;"><strong>0</strong></td><td data-label="Observação">Presença em diretórios locais não mapeada no diagnóstico automático. Verificação de cadastro em Apontador, TeleListas, GuiaMais e correlatos entra na auditoria técnica.</td></tr>
+        <tr><td data-label="Área">Redes sociais</td><td data-label="Máx" style="text-align:center;">4</td><td data-label="Nota" style="text-align:center;"><strong>0</strong></td><td data-label="Observação">Redes sociais não detectadas vinculadas ao perfil.</td></tr>
+        <tr style="font-weight:600; background:var(--offwhite,#f7f5f1);"><td data-label="Área">Total</td><td data-label="Máx" style="text-align:center;">100</td><td data-label="Nota" style="text-align:center;"><strong>25</strong></td><td data-label="Observação"></td></tr>
       </tbody>
     </table>
 
