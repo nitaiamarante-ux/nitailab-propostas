@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<title>Black Tiger — avaliações sem resposta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Urbanist:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carvao:#1C1C1A;
+    --cinza:#5A5A55;
+    --medio:#9A9690;
+    --offwhite:#F5F0EB;
+    --papel:#FFFFFF;
+    --nude:#E8DDD2;
+    --borda:#D4C9BE;
+    --dourado:#A07840;
+    --dourado-claro:#C9A96E;
+    --dourado-fraco:#F2E7D6;
+    --amarelo:#FFCC00;
+    --verde:#34A853;
+    --verde-fraco:#E4F3E9;
+    --vermelho:#EA4335;
+    --vermelho-fraco:#FBE7E5;
+    --azul:#4285F4;
+    --sombra:0 1px 2px rgba(28,28,26,.05), 0 6px 20px rgba(28,28,26,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--offwhite);
+    color:var(--carvao);
+    font-family:"Outfit",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:15px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(150px + env(safe-area-inset-bottom));
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:20px 16px 0}
+
+  /* ---------- topo ---------- */
+  .eyebrow{
+    font-family:"Urbanist",sans-serif;font-weight:700;font-size:11px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--dourado);margin-bottom:8px;
+  }
+  h1{
+    font-family:"Urbanist",sans-serif;font-weight:800;
+    font-size:clamp(23px,6vw,32px);line-height:1.15;margin:0 0 10px;letter-spacing:-.01em;
+  }
+  .lead{color:var(--cinza);font-size:15px;margin:0 0 4px}
+  .lead b{color:var(--carvao);font-weight:600}
+
+  .placar{
+    display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;
+  }
+  .pill{
+    background:var(--papel);border:1px solid var(--borda);border-radius:999px;
+    padding:6px 12px;font-size:12.5px;color:var(--cinza);
+  }
+  .pill b{color:var(--carvao);font-weight:600}
+
+  .quem{
+    margin:16px 0 0;background:var(--papel);border:1px solid var(--borda);
+    border-radius:14px;padding:14px;box-shadow:var(--sombra);
+  }
+  .quem label{display:block;font-size:12.5px;color:var(--cinza);margin-bottom:6px}
+  .quem input{
+    width:100%;border:1px solid var(--borda);border-radius:10px;background:var(--offwhite);
+    padding:11px 12px;font-family:inherit;font-size:16px;color:var(--carvao);
+    -webkit-appearance:none;appearance:none;
+  }
+  .quem input:focus{outline:none;border-color:var(--dourado);background:var(--papel)}
+
+  /* ---------- filtros ---------- */
+  .filtros{
+    display:flex;gap:6px;overflow-x:auto;margin:20px -16px 0;padding:0 16px 4px;
+    scrollbar-width:none;
+  }
+  .filtros::-webkit-scrollbar{display:none}
+  .filtro{
+    flex:0 0 auto;border:1px solid var(--borda);background:var(--papel);
+    border-radius:999px;padding:8px 14px;font-family:inherit;font-size:13px;
+    color:var(--cinza);cursor:pointer;white-space:nowrap;
+  }
+  .filtro.on{background:var(--carvao);border-color:var(--carvao);color:var(--offwhite);font-weight:500}
+
+  /* ---------- cards ---------- */
+  #lista{margin-top:14px}
+  .card{
+    background:var(--papel);border:1px solid var(--borda);border-radius:16px;
+    padding:16px;margin-bottom:12px;box-shadow:var(--sombra);
+    border-left:4px solid var(--borda);
+  }
+  .card.pronto{border-left-color:var(--verde)}
+  .card.convidar{border-left-color:var(--dourado)}
+
+  .topo{display:flex;gap:12px;align-items:flex-start}
+  .avatar{
+    flex:0 0 auto;width:46px;height:46px;border-radius:50%;overflow:hidden;
+    background:var(--nude);display:flex;align-items:center;justify-content:center;
+    font-family:"Urbanist",sans-serif;font-weight:700;font-size:16px;color:var(--dourado);
+    border:1px solid var(--borda);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .ident{min-width:0;flex:1}
+  .nome{font-family:"Urbanist",sans-serif;font-weight:700;font-size:16.5px;line-height:1.25;word-break:break-word}
+  .sub{font-size:12px;color:var(--medio);margin-top:2px}
+  .guide{color:var(--dourado);font-weight:500}
+  .estrelas{color:var(--amarelo);font-size:15px;letter-spacing:1px;margin-top:3px;
+    text-shadow:0 0 1px rgba(160,120,64,.45)}
+
+  .texto{
+    margin:12px 0 0;font-size:15px;color:var(--carvao);
+    background:var(--offwhite);border-radius:10px;padding:12px 13px;
+  }
+  .texto.vazio{color:var(--medio);font-style:italic;font-size:13.5px}
+  .data{
+    margin-top:10px;font-size:12px;color:var(--medio);
+    display:flex;flex-wrap:wrap;gap:5px;align-items:center;
+  }
+  .data a{color:var(--azul);text-decoration:none}
+  .sep{color:var(--borda)}
+
+  .perg{margin-top:14px;padding-top:13px;border-top:1px dashed var(--borda)}
+  .perg + .perg{margin-top:11px;padding-top:11px}
+  .perg .q{font-size:13.5px;font-weight:500;color:var(--cinza);margin-bottom:7px}
+  .ops{display:flex;gap:6px}
+  .op{
+    flex:1;border:1px solid var(--borda);background:var(--papel);border-radius:10px;
+    padding:10px 4px;font-family:inherit;font-size:13.5px;color:var(--cinza);
+    cursor:pointer;transition:none;
+  }
+  .op:active{transform:scale(.98)}
+  .op.on[data-v="sim"]{background:var(--verde-fraco);border-color:var(--verde);color:#1d6b3a;font-weight:600}
+  .op.on[data-v="nao"]{background:var(--vermelho-fraco);border-color:var(--vermelho);color:#a52a20;font-weight:600}
+  .op.on[data-v="nsei"]{background:var(--nude);border-color:var(--medio);color:var(--carvao);font-weight:600}
+
+  .tag{
+    margin-top:12px;display:none;align-items:center;gap:8px;
+    background:var(--dourado-fraco);border:1px solid var(--dourado-claro);
+    border-radius:10px;padding:10px 12px;font-size:13px;color:#6d4f22;font-weight:500;
+  }
+  .tag.on{display:flex}
+  .tag span{font-size:15px}
+
+  .obs{margin-top:10px;display:none}
+  .obs.on{display:block}
+  .obs input{
+    width:100%;border:1px solid var(--borda);border-radius:10px;background:var(--offwhite);
+    padding:10px 12px;font-family:inherit;font-size:16px;color:var(--carvao);
+    -webkit-appearance:none;appearance:none;
+  }
+  .obs input:focus{outline:none;border-color:var(--dourado);background:var(--papel)}
+
+  .vazio-lista{text-align:center;color:var(--medio);padding:40px 10px;font-size:14px}
+
+  /* ---------- barra ---------- */
+  .barra{
+    position:fixed;left:0;right:0;bottom:0;z-index:20;
+    background:rgba(245,240,235,.94);
+    -webkit-backdrop-filter:saturate(160%) blur(10px);backdrop-filter:saturate(160%) blur(10px);
+    border-top:1px solid var(--borda);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+  .barra-in{max-width:720px;margin:0 auto}
+  #prog{font-size:13px;color:var(--cinza);margin-bottom:9px;text-align:center}
+  #prog b{color:var(--carvao);font-weight:600}
+  .botoes{display:flex;gap:8px}
+  .btn{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+    border:1px solid transparent;border-radius:12px;padding:14px 10px;
+    font-family:"Urbanist",sans-serif;font-weight:700;font-size:15px;
+    text-decoration:none;cursor:pointer;text-align:center;
+  }
+  .btn-wa{background:#25D366;color:#08331a;box-shadow:0 2px 10px rgba(37,211,102,.3)}
+  .btn-cp{flex:0 0 auto;background:var(--papel);border-color:var(--borda);color:var(--cinza);padding:14px 16px}
+  .btn.off{opacity:.4;pointer-events:none}
+  .rodape{text-align:center;font-size:11px;color:var(--medio);margin:6px 0 22px}
+  .rodape button{background:none;border:none;color:var(--medio);font:inherit;text-decoration:underline;cursor:pointer;padding:0}
+  .toast{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:130px;z-index:30;
+    background:var(--carvao);color:var(--offwhite);padding:10px 16px;border-radius:999px;
+    font-size:13px;opacity:0;pointer-events:none;transition:opacity .18s;
+  }
+  .toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="eyebrow">Resgate seu Google &middot; Black Tiger</div>
+  <h1>Quem são essas pessoas hoje?</h1>
+  <p class="lead">
+    <b>31 pessoas avaliaram o box com 5 estrelas no Google e nunca receberam resposta de vocês.</b>
+    Antes da gente responder uma por uma, preciso saber quem ainda treina aí e quem nunca pisou no endereço novo &mdash;
+    quem nunca pisou, a resposta vira convite pra conhecer a unidade nova.
+  </p>
+  <p class="lead" style="font-size:13.5px;margin-top:8px">Marca aqui embaixo. Salva sozinho no celular — pode parar e voltar depois.</p>
+
+  <div class="placar">
+    <div class="pill"><b>31</b> avaliações</div>
+    <div class="pill">todas <b>5 estrelas</b></div>
+    <div class="pill"><b>0</b> respondidas</div>
+    <div class="pill">de <b>set/2023</b> a <b>nov/2025</b></div>
+  </div>
+
+  <div class="quem">
+    <label for="autor">Quem está respondendo? (vai junto na mensagem)</label>
+    <input id="autor" type="text" placeholder="seu nome" autocomplete="name">
+  </div>
+
+  <div class="filtros" id="filtros"></div>
+  <div id="lista"></div>
+</div>
+
+<div class="barra">
+  <div class="barra-in">
+    <div id="prog"></div>
+    <div class="botoes">
+      <a class="btn btn-wa" id="btn-wa" href="#" target="_blank" rel="noopener">Enviar pro WhatsApp</a>
+      <button class="btn btn-cp" id="btn-cp" type="button">Copiar</button>
+    </div>
+  </div>
+</div>
+<div class="rodape"><button id="btn-zerar" type="button">apagar tudo e começar de novo</button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const WA = "5531982976006";
+const DATA = [
+ {
+  "id": "ChdDSUhNMG9nS0VKT2NsWW1hb05la3FBRRAB",
+  "n": "Andre Bandeira",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJERax4idvOm-H4op4MuqlcpvChyz79ekS2MNOhESJEXAEWdQ=s1920-c-rp-mo-ba12-br100",
+  "e": 5,
+  "t": "Ótimo espaço. Aparelhos de musculação novos. Equipe e atendimento de qualidade. Profissionais atenciosos.",
+  "d": "14/11/2025",
+  "i": "2025-11-14T10:18:21.754Z",
+  "lg": true,
+  "nr": 21,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VKT2NsWW1hb05la3FBRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEJOclYmaoNekqAE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "Ci9DQUlRQUNvZENodHljRjlvT21WbVVXRkpibVZyYVZvNVgxZzBNVFYzWTFKWGJYYxAB",
+  "n": "Cleber Miranda",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjVRfoZ0EwU4ZGAGZY-MZ_RmDreHVU0oL5g-3e3n4OEPzfy69nTfeg=s1920-c-rp-mo-ba12-br100",
+  "e": 5,
+  "t": "Melhor academia da cidade.",
+  "d": "23/10/2025",
+  "i": "2025-10-23T14:54:05.198Z",
+  "lg": true,
+  "nr": 137,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21WbVVXRkpibVZyYVZvNVgxZzBNVFYzWTFKWGJYYxAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CAIQACodChtycF9oOmVmUWFJbmVraVo5X1g0MTV3Y1JXbXc%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURfdkwzcFdBEAE",
+  "n": "Thales Augusto Nascimento VIote",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjVPkPe9oZ3jOp1I0ctgFKkDnrbQ7Ry9qqhxBOYWYZuF3l-vo-2I=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Melhor box e academia de Pará de Minas! Estrutura fantástica, equipe de professores e professoras sensacional!",
+  "d": "22/01/2025",
+  "i": "2025-01-22T15:02:22.692Z",
+  "lg": false,
+  "nr": 3,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURfdkwzcFdBEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgID_vL3pWA%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNuckpLY0V3EAE",
+  "n": "Henrique Mendonça",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjUOhqHFfVoKKDa1sU1jpys6IGyVkAZeBG9t7l7AWahJZUhrI3uUbQ=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "23/09/2024",
+  "i": "2024-09-23T14:38:53.569Z",
+  "lg": false,
+  "nr": 6,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNuckpLY0V3EAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICnrJKcEw%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNyckpIVUZBEAE",
+  "n": "Thales Augusto Nascimento Viote ATI R3",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJUYcVtSn2uOHZBa6QWWXxEi2GO50YFGeI8Cl7I8cxhbW-T3A=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Excelente local para se exercitar, professores Tom, Alycia e Karina são fantásticos.",
+  "d": "04/07/2024",
+  "i": "2024-07-04T18:14:23.540Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNyckpIVUZBEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICrrJHUFA%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSUNEdDdhdDN3RRAB",
+  "n": "Saiaca Lalesca",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocKuQ_IRSs6IfehuqQ1I8fxHFPuH-iEIFg6aDe8jzpRMMw-KtQ=s1920-c-rp-mo-ba12-br100",
+  "e": 5,
+  "t": "A experiência  que estamos obtendo  , e um melhor desempenho  para o meu filho  , ficou mais disposto e esta ajudando muito ele , no futbol ...",
+  "d": "02/05/2024",
+  "i": "2024-05-02T14:53:02.081Z",
+  "lg": true,
+  "nr": 8,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNEdDdhdDN3RRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICDt7at3wE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURaM08yQW13RRAB",
+  "n": "Marlei silva viana",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjVkYpujyLp4ljOb6sd0D9ic4QEVmHncbi9QXiK2FsX4DKuwO3AqCg=s1920-c-rp-mo-ba12-br100",
+  "e": 5,
+  "t": "",
+  "d": "26/09/2023",
+  "i": "2023-09-26T15:03:38.885Z",
+  "lg": true,
+  "nr": 6,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaM08yQW13RRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZ3O2AmwE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURaMU5IeTdnRRAB",
+  "n": "Welinton Vieira",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocKzP6HMDZytUvPstS3XJLAC_KX6WG6Ac8fCroUtdZe6KLybKg=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Uma experiência incrível!!",
+  "d": "25/09/2023",
+  "i": "2023-09-25T09:06:31.329Z",
+  "lg": false,
+  "nr": 2,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaMU5IeTdnRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZ1NHy7gE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURacU9lQmJREAE",
+  "n": "Marina Saraiva",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJh9Mby5GTvSmyogfb3q68xM3z2G7Ji93Wht7144WXv0Ydk-Q=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "23/09/2023",
+  "i": "2023-09-23T13:28:47.727Z",
+  "lg": false,
+  "nr": 0,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURacU9lQmJREAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZqOeBbQ%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURac0p1aEpBEAE",
+  "n": "Pablo C L Oliveira",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjVrd3DXVk6Cdy3kY3HpS2Potn5CLvJQN5q12VtBWVc6zd1BP6L7jQ=s1920-c-rp-mo-ba12-br100",
+  "e": 5,
+  "t": "Sempre bem recebido👊",
+  "d": "22/09/2023",
+  "i": "2023-09-22T23:52:52.703Z",
+  "lg": true,
+  "nr": 3,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURac0p1aEpBEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsJuhJA%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURaOE95VWx3RRAB",
+  "n": "Karolaine Pacheco",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocK_tblh12_xTKmXcu-L1tiRmqTwn7kUo2Fbr-HThl6GXqTXaw=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "22/09/2023",
+  "i": "2023-09-22T21:15:55.194Z",
+  "lg": false,
+  "nr": 0,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaOE95VWx3RRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZ8OyUlwE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURaOExUZGVBEAE",
+  "n": "Nathália Cristina",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocLQ2vfcff1TdT9s0HiYl8Sey31QCU4pyCMbsuQ3dce1UGxEUw=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Box excelente, e com profissionais muito bem qualificados.",
+  "d": "22/09/2023",
+  "i": "2023-09-22T21:06:49.277Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURaOExUZGVBEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZ8LTdeA%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURaOEtTbHB3RRAB",
+  "n": "Telma Barbosa de Almeida",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocLtQ1p-UYoiWUCJPtgeAL_U30pHMCJD4Kjlx3P_nT2j41WXLg=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "22/09/2023",
+  "i": "2023-09-22T20:59:13.294Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaOEtTbHB3RRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZ8KSlpwE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURac0wtMHN3RRAB",
+  "n": "Tainara Renata",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocLo_zHW-xNXxW5bBI7jzvHumtz0ggByVB_zLafnHRo91WgnjUU=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "22/09/2023",
+  "i": "2023-09-22T20:20:37.645Z",
+  "lg": false,
+  "nr": 2,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURac0wtMHN3RRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsL-0swE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURac082cTVRRRAB",
+  "n": "Raiane Faria",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjXxW-ba2iJLKnvSAJprHpM8IeQUebkYXhULlIIjzoQzY3YllnqN=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Quase me mata, mas faz minha saúde cada dia mais forte ❤️",
+  "d": "22/09/2023",
+  "i": "2023-09-22T18:28:51.180Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURac082cTVRRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsO6q5QE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURac01iUUx3EAE",
+  "n": "Marisa Medeiros",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjXa7ZVn-hwt_9sM8efyrXIjJQLfwnVgja-RUPLUMGe9vDDHUi_Shg=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Foi ótimo,a professora Evelin é uma gracinha.",
+  "d": "22/09/2023",
+  "i": "2023-09-22T18:11:59.522Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURac01iUUx3EAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsMbQLw%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURac05xMTlnRRAB",
+  "n": "Kátia Alexandra",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJRaUPaS9sDF7T9fv3YDNzohhANqwuguuwuV4qZSxJR1I27sw=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Tive uma otima experiência, o cross tem espaço organizado, ótimos aparelhos, excelentes treinos e ótimos profissionais",
+  "d": "22/09/2023",
+  "i": "2023-09-22T18:06:41.936Z",
+  "lg": false,
+  "nr": 2,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURac05xMTlnRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsNq19gE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURac0tya0ZnEAE",
+  "n": "Sidney Silva Lopes",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjXAKgG7LGxdgukRR_8yUXn7i_J55hmGnXhsKGi8WyrvbROWTgbb=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "22/09/2023",
+  "i": "2023-09-22T18:01:10.546Z",
+  "lg": false,
+  "nr": 0,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURac0tya0ZnEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsKrkFg%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURac01MYVd3EAE",
+  "n": "Karina Caetano",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjUlb8ipfLeMDHbNJsSUT3plSiPIuJf0DL9RYNa2uby73lFDeqT4=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "É o melhor Box de CrossFit que já treinei! Amo🤩",
+  "d": "22/09/2023",
+  "i": "2023-09-22T17:47:03.223Z",
+  "lg": false,
+  "nr": 2,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURac01MYVd3EAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsMLaWw%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURac0lMbm1RRRAB",
+  "n": "Carla Renata",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJ0h5RqeG3mbhpi-h6Qka7Adn_3Tcs7sIKX8Zr2c2cVJWL3GQ=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Local e profissionais top. Super indico",
+  "d": "22/09/2023",
+  "i": "2023-09-22T17:46:19.148Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURac0lMbm1RRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsILnmQE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURac096TkxBEAE",
+  "n": "Kelly Soares",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjWlgKgZ9n7Wcir8qO6TQbhGWuJR703caUn1-xras4FDFpuXP88VfQ=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Tive um ótimo treino, foi uma experiência incrível. Extremamente profissionais e tem ótimos equipamentos.",
+  "d": "22/09/2023",
+  "i": "2023-09-22T17:38:19.705Z",
+  "lg": false,
+  "nr": 7,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURac096TkxBEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsOzNLA%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSURac1BEMWJnEAE",
+  "n": "Cristina Soares",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocLS6VFVJMDnfHsJ10i3O6BEsNdTRoI_udRjN5KiUZQbeXicUw=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Foi excelente,  gostaria dmuito de continuar",
+  "d": "22/09/2023",
+  "i": "2023-09-22T17:07:45.954Z",
+  "lg": false,
+  "nr": 11,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSURac1BEMWJnEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZsPD1bg%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSURaMEppbDFRRRAB",
+  "n": "Diêgo Oliveira",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjVfd7WY1payaXG8VRVkCIvgiteUTSq__VhtoWVhG64w7KJFJjE=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Melhor de Minas 🤩",
+  "d": "22/09/2023",
+  "i": "2023-09-22T14:20:27.051Z",
+  "lg": false,
+  "nr": 4,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSURaMEppbDFRRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgIDZ0Jil1QE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSUNaMi11MW1BRRAB",
+  "n": "Pollyana",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJSPQ8JsWP79uq6BIdq7D_RAb8GLquYVYxxhhxHRe8BSQuT=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "18/09/2023",
+  "i": "2023-09-18T21:44:25.164Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNaMi11MW1BRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ2-u1mAE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSUNaMi1tc3RRRRAB",
+  "n": "Lucas Barcelos",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocLU1HxzW740SqGeZFFuR31jgxfqYMh7v4ZbcfiuFyR6bogHryE=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Melhor box !!",
+  "d": "18/09/2023",
+  "i": "2023-09-18T20:36:27.316Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNaMi1tc3RRRRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ2-mstQE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNaMjZITWFREAE",
+  "n": "Altair Junio Silva",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjUcSfSqOkBaapGChkc_0IOUw7MS9HQ1KclcS-bhidYP8yy2KX4tpg=s1920-c-rp-mo-ba12-br100",
+  "e": 5,
+  "t": "Melhor box",
+  "d": "18/09/2023",
+  "i": "2023-09-18T20:20:03.824Z",
+  "lg": true,
+  "nr": 17,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNaMjZITWFREAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ26HMaQ%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChdDSUhNMG9nS0VJQ0FnSUNaMjVhcHB3RRAB",
+  "n": "João Paulo de Oliveira",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjWjiC6hn7MArzjIShHCd2L5LvY_CwWyFVFcrMhsG7c0-_7lPOyu=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "18/09/2023",
+  "i": "2023-09-18T19:56:06.570Z",
+  "lg": false,
+  "nr": 4,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChdDSUhNMG9nS0VJQ0FnSUNaMjVhcHB3RRAB!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ25appwE%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNaMjhhSGFREAE",
+  "n": "Vinicius Diniz",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjWj7aa-oqAXVDZWKm37lLt99ki1dKamY3NMv-p6TS64ChcR2E3w=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Box top demais",
+  "d": "18/09/2023",
+  "i": "2023-09-18T19:51:20.716Z",
+  "lg": false,
+  "nr": 1,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNaMjhhSGFREAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ28aHaQ%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNaMl9yZWZ3EAE",
+  "n": "Maria Clara Mendonça",
+  "f": "https://lh3.googleusercontent.com/a/ACg8ocJkBuS3BUfVtdCBgzI3VP9cDi65F0asowhtqs73yAEENQBBOA=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "Melhor box",
+  "d": "18/09/2023",
+  "i": "2023-09-18T19:47:16.037Z",
+  "lg": false,
+  "nr": 5,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNaMl9yZWZ3EAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ2_refw%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNaMl9yYU9nEAE",
+  "n": "Roselle Cláudia",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjWnCQ1-pHVZzkODHwhBx8oNUciNe5F2ma_Dwaq_HcDk9L8qYbgB=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "18/09/2023",
+  "i": "2023-09-18T19:47:03.623Z",
+  "lg": false,
+  "nr": 3,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNaMl9yYU9nEAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZ2_raOg%7C%7C?hl=pt-BR"
+ },
+ {
+  "id": "ChZDSUhNMG9nS0VJQ0FnSUNaa3A3M2FREAE",
+  "n": "Bruna Faria",
+  "f": "https://lh3.googleusercontent.com/a-/ALV-UjVkRfjFu-Rz1SuHIKSRjW38_SueTtqqLhd8kgQg70e6A5fidmsyEw=s1920-c-rp-mo-br100",
+  "e": 5,
+  "t": "",
+  "d": "07/09/2023",
+  "i": "2023-09-07T11:24:54.085Z",
+  "lg": false,
+  "nr": 3,
+  "u": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnSUNaa3A3M2FREAE!2m1!1s0x0:0xed82a5a8ebfed4a1!3m1!1s2@1:CIHM0ogKEICAgICZkp73aQ%7C%7C?hl=pt-BR"
+ }
+];
+const KEY = "bt_reviews_v1";
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) { state = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+function st(id){ if(!state[id]) state[id] = {treina:null, novo:null, obs:""}; return state[id]; }
+
+const autorEl = document.getElementById("autor");
+autorEl.value = (state.__autor || "");
+autorEl.addEventListener("input", () => { state.__autor = autorEl.value; save(); atualizar(); });
+
+/* --------- classificacao --------- */
+function balde(s){
+  if(!s || !s.treina || !s.novo) return "falta";
+  if(s.treina === "sim") return "ativo";
+  if(s.treina === "nao" && s.novo === "nao") return "convidar";
+  if(s.treina === "nao" && s.novo === "sim") return "ex";
+  return "duvida";
+}
+const NOME_BALDE = {
+  convidar: "CONVIDAR PRA CONHECER A UNIDADE NOVA",
+  ativo: "AINDA TREINA NO BOX",
+  ex: "SAIU, MAS JÁ CONHECEU O ENDEREÇO NOVO",
+  duvida: "OS SÓCIOS NÃO SOUBERAM DIZER"
+};
+
+function iniciais(n){
+  const p = (n||"?").trim().split(/\s+/);
+  return ((p[0]||"?")[0] + (p.length>1 ? p[p.length-1][0] : "")).toUpperCase();
+}
+function haQuanto(iso){
+  const d = new Date(iso), hoje = new Date();
+  let m = (hoje.getFullYear()-d.getFullYear())*12 + (hoje.getMonth()-d.getMonth());
+  if (m < 1) return "esse mês";
+  if (m < 12) return "há " + m + " meses";
+  const a = Math.floor(m/12);
+  return a === 1 ? "há 1 ano" : "há " + a + " anos";
+}
+
+/* --------- filtros --------- */
+const FILTROS = [
+  {k:"todas",   rot:"Todas"},
+  {k:"falta",   rot:"Falta marcar"},
+  {k:"texto",   rot:"Com comentário"},
+  {k:"soestrela", rot:"Só estrela"},
+  {k:"convidar", rot:"Pra convidar"},
+  {k:"feitas",  rot:"Já marcadas"}
+];
+let filtroAtual = "todas";
+const filtrosEl = document.getElementById("filtros");
+
+function contaFiltro(k){
+  return DATA.filter(r => passa(r, k)).length;
+}
+function passa(r, k){
+  const b = balde(state[r.id]);
+  if(k === "todas") return true;
+  if(k === "falta") return b === "falta";
+  if(k === "feitas") return b !== "falta";
+  if(k === "texto") return !!r.t;
+  if(k === "soestrela") return !r.t;
+  if(k === "convidar") return b === "convidar";
+  return true;
+}
+function pintarFiltros(){
+  filtrosEl.innerHTML = "";
+  FILTROS.forEach(f => {
+    const b = document.createElement("button");
+    b.className = "filtro" + (f.k === filtroAtual ? " on" : "");
+    b.type = "button";
+    b.textContent = f.rot + " (" + contaFiltro(f.k) + ")";
+    b.onclick = () => { filtroAtual = f.k; pintarFiltros(); pintarLista(); window.scrollTo({top:0,behavior:"smooth"}); };
+    filtrosEl.appendChild(b);
+  });
+}
+
+/* --------- lista --------- */
+const listaEl = document.getElementById("lista");
+
+function cardHTML(r){
+  const s = st(r.id);
+  const estrelas = "★".repeat(r.e) + "☆".repeat(5 - r.e);
+  const subPartes = [];
+  if (r.lg) subPartes.push('<span class="guide">Local Guide</span>');
+  subPartes.push(r.nr === 1 ? "1 avaliação no Google" : r.nr + " avaliações no Google");
+  const texto = r.t
+    ? '<div class="texto">' + escapar(r.t) + '</div>'
+    : '<div class="texto vazio">Deu 5 estrelas e não escreveu nada.</div>';
+  return ''
+    + '<div class="topo">'
+    +   '<div class="avatar" data-ini="' + escapar(iniciais(r.n)) + '">'
+    +     (r.f ? '<img src="' + escapar(r.f) + '" alt="" loading="lazy" referrerpolicy="no-referrer">' : escapar(iniciais(r.n)))
+    +   '</div>'
+    +   '<div class="ident">'
+    +     '<div class="nome">' + escapar(r.n) + '</div>'
+    +     '<div class="sub">' + subPartes.join(' &middot; ') + '</div>'
+    +     '<div class="estrelas">' + estrelas + '</div>'
+    +   '</div>'
+    + '</div>'
+    + texto
+    + '<div class="data">' + r.d + ' <span class="sep">&middot;</span> ' + haQuanto(r.i)
+    +   ' <span class="sep">&middot;</span> <a href="' + escapar(r.u) + '" target="_blank" rel="noopener">ver no Google</a></div>'
+    + bloco("treina", "Essa pessoa treina no box hoje?", s.treina)
+    + bloco("novo", "Já treinou no endereço novo, depois da mudança?", s.novo)
+    + '<div class="tag"><span>✉</span> Convidar pra conhecer a unidade nova</div>'
+    + '<div class="obs"><input type="text" placeholder="observação (opcional) — ex: irmã da Carla, saiu por causa do horário" value="' + escapar(s.obs || "") + '"></div>';
+}
+function bloco(campo, pergunta, valor){
+  const ops = [["sim","Sim"],["nao","Não"],["nsei","Não sei"]];
+  return '<div class="perg" data-campo="' + campo + '">'
+    + '<div class="q">' + pergunta + '</div>'
+    + '<div class="ops">'
+    + ops.map(o => '<button type="button" class="op' + (valor === o[0] ? " on" : "") + '" data-v="' + o[0] + '">' + o[1] + '</button>').join("")
+    + '</div></div>';
+}
+function escapar(s){
+  return String(s == null ? "" : s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+}
+
+function pintarCard(el, r){
+  const s = st(r.id);
+  const b = balde(s);
+  el.classList.toggle("pronto", b !== "falta");
+  el.classList.toggle("convidar", b === "convidar");
+  el.querySelector(".tag").classList.toggle("on", b === "convidar");
+  el.querySelector(".obs").classList.toggle("on", b !== "falta");
+  el.querySelectorAll(".perg").forEach(p => {
+    const v = s[p.dataset.campo];
+    p.querySelectorAll(".op").forEach(o => o.classList.toggle("on", o.dataset.v === v));
+  });
+}
+
+function pintarLista(){
+  listaEl.innerHTML = "";
+  const itens = DATA.filter(r => passa(r, filtroAtual));
+  if(!itens.length){
+    listaEl.innerHTML = '<div class="vazio-lista">Nada nesse filtro.</div>';
+    return;
+  }
+  itens.forEach(r => {
+    const el = document.createElement("div");
+    el.className = "card";
+    el.innerHTML = cardHTML(r);
+
+    const img = el.querySelector(".avatar img");
+    if(img) img.onerror = () => { const a = img.parentNode; a.textContent = a.dataset.ini; };
+
+    el.querySelectorAll(".perg").forEach(p => {
+      p.querySelectorAll(".op").forEach(o => {
+        o.onclick = () => {
+          const s = st(r.id);
+          const campo = p.dataset.campo;
+          s[campo] = (s[campo] === o.dataset.v) ? null : o.dataset.v;
+          save(); pintarCard(el, r); pintarFiltros(); atualizar();
+        };
+      });
+    });
+    const obs = el.querySelector(".obs input");
+    obs.addEventListener("input", () => { st(r.id).obs = obs.value; save(); atualizar(); });
+
+    pintarCard(el, r);
+    listaEl.appendChild(el);
+  });
+}
+
+/* --------- mensagem --------- */
+function montar(){
+  const grupos = {convidar:[], ativo:[], ex:[], duvida:[]};
+  let feitas = 0;
+  DATA.forEach(r => {
+    const s = state[r.id];
+    const b = balde(s);
+    if(b === "falta") return;
+    feitas++;
+    let linha = "- " + r.n + " (" + r.d + ")";
+    if(b === "duvida"){
+      const tr = s.treina === "sim" ? "treina sim" : s.treina === "nao" ? "não treina" : "treina?";
+      const nv = s.novo === "sim" ? "conheceu o endereço novo" : s.novo === "nao" ? "não conheceu o endereço novo" : "conheceu o endereço novo?";
+      linha += " [" + tr + " / " + nv + "]";
+    }
+    if(s.obs && s.obs.trim()) linha += " - " + s.obs.trim();
+    grupos[b].push(linha);
+  });
+  let texto = "Black Tiger — avaliações do Google";
+  const autor = (autorEl.value || "").trim();
+  if(autor) texto += " (respondido por " + autor + ")";
+  texto += "\n" + feitas + " de " + DATA.length + " marcadas";
+  ["convidar","ativo","ex","duvida"].forEach(k => {
+    if(!grupos[k].length) return;
+    texto += "\n\n" + NOME_BALDE[k] + " (" + grupos[k].length + "):\n" + grupos[k].join("\n");
+  });
+  return {texto, feitas};
+}
+
+function atualizar(){
+  const {texto, feitas} = montar();
+  const falta = DATA.length - feitas;
+  document.getElementById("prog").innerHTML = falta > 0
+    ? "Faltam <b>" + falta + "</b> de <b>" + DATA.length + "</b> pessoas"
+    : "Pronto! As <b>" + DATA.length + "</b> pessoas foram marcadas";
+  const wa = document.getElementById("btn-wa");
+  const cp = document.getElementById("btn-cp");
+  if(feitas > 0){
+    wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(texto);
+    wa.classList.remove("off"); cp.classList.remove("off");
+  } else {
+    wa.href = "#"; wa.classList.add("off"); cp.classList.add("off");
+  }
+}
+
+/* --------- acoes de rodape --------- */
+const toastEl = document.getElementById("toast");
+let toastT;
+function toast(msg){
+  toastEl.textContent = msg; toastEl.classList.add("on");
+  clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove("on"), 2200);
+}
+document.getElementById("btn-cp").onclick = async () => {
+  const {texto} = montar();
+  try { await navigator.clipboard.writeText(texto); toast("Copiado."); }
+  catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = texto; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast("Copiado."); } catch(e2){ toast("Não deu pra copiar."); }
+    document.body.removeChild(ta);
+  }
+};
+document.getElementById("btn-zerar").onclick = () => {
+  if(!confirm("Apagar todas as marcações e começar de novo?")) return;
+  state = {}; save(); autorEl.value = "";
+  pintarFiltros(); pintarLista(); atualizar();
+};
+
+pintarFiltros();
+pintarLista();
+atualizar();
+</script>
+</body>
+</html>
