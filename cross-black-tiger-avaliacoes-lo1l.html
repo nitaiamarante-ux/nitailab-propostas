@@ -809,16 +809,18 @@ function montar(){
   if(naoMarcadas.length){
     texto += "\n\nAINDA NÃO MARCADAS (" + naoMarcadas.length + "):\n" + naoMarcadas.join(", ");
   }
-  return {texto, tocadas, fechadas};
+  return {texto, tocadas, fechadas, parciais: grupos.parcial.length};
 }
 
 function atualizar(){
-  const {texto, tocadas, fechadas} = montar();
+  const {texto, tocadas, fechadas, parciais} = montar();
   const falta = DATA.length - fechadas;
   document.getElementById("prog").innerHTML = tocadas === 0
     ? "Marque pelo menos uma pessoa pra liberar o envio"
     : falta > 0
-      ? "Faltam <b>" + falta + "</b> de <b>" + DATA.length + "</b> &mdash; pode mandar o que já marcou"
+      ? "<b>" + fechadas + "</b> de <b>" + DATA.length + "</b> fechadas"
+        + (parciais ? " &middot; <b>" + parciais + "</b> pela metade" : "")
+        + " &mdash; pode mandar o que já marcou"
       : "Pronto! As <b>" + DATA.length + "</b> pessoas foram marcadas";
   const wa = document.getElementById("btn-wa");
   const cp = document.getElementById("btn-cp");
