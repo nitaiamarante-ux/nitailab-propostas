@@ -95,6 +95,7 @@
     border-left:4px solid var(--borda);
   }
   .card.pronto{border-left-color:var(--verde)}
+  .card.parcial{border-left-color:var(--amarelo)}
   .card.convidar{border-left-color:var(--dourado)}
 
   .topo{display:flex;gap:12px;align-items:flex-start}
@@ -617,7 +618,8 @@ autorEl.addEventListener("input", () => { state.__autor = autorEl.value; save();
 
 /* --------- classificacao --------- */
 function balde(s){
-  if(!s || !s.treina || !s.novo) return "falta";
+  if(!s || (!s.treina && !s.novo)) return "falta";
+  if(!s.treina || !s.novo) return "parcial";
   if(s.treina === "sim") return "ativo";
   if(s.treina === "nao" && s.novo === "nao") return "convidar";
   if(s.treina === "nao" && s.novo === "sim") return "ex";
@@ -627,8 +629,11 @@ const NOME_BALDE = {
   convidar: "CONVIDAR PRA CONHECER A UNIDADE NOVA",
   ativo: "AINDA TREINA NO BOX",
   ex: "SAIU, MAS JÁ CONHECEU O ENDEREÇO NOVO",
-  duvida: "OS SÓCIOS NÃO SOUBERAM DIZER"
+  duvida: "OS SÓCIOS NÃO SOUBERAM DIZER",
+  parcial: "FALTOU UMA DAS DUAS PERGUNTAS"
 };
+function rotuloTreina(v){ return v === "sim" ? "treina hoje" : v === "nao" ? "não treina" : v === "nsei" ? "não sabem se treina" : "FALTA: treina hoje?"; }
+function rotuloNovo(v){ return v === "sim" ? "conheceu o endereço novo" : v === "nao" ? "não conheceu o endereço novo" : v === "nsei" ? "não sabem se conheceu o novo" : "FALTA: conheceu o endereço novo?"; }
 
 function iniciais(n){
   const p = (n||"?").trim().split(/\s+/);
@@ -661,8 +666,8 @@ function contaFiltro(k){
 function passa(r, k){
   const b = balde(state[r.id]);
   if(k === "todas") return true;
-  if(k === "falta") return b === "falta";
-  if(k === "feitas") return b !== "falta";
+  if(k === "falta") return b === "falta" || b === "parcial";
+  if(k === "feitas") return b !== "falta" && b !== "parcial";
   if(k === "texto") return !!r.t;
   if(k === "soestrela") return !r.t;
   if(k === "convidar") return b === "convidar";
@@ -728,7 +733,8 @@ function escapar(s){
 function pintarCard(el, r){
   const s = st(r.id);
   const b = balde(s);
-  el.classList.toggle("pronto", b !== "falta");
+  el.classList.toggle("pronto", b !== "falta" && b !== "parcial");
+  el.classList.toggle("parcial", b === "parcial");
   el.classList.toggle("convidar", b === "convidar");
   el.querySelector(".tag").classList.toggle("on", b === "convidar");
   el.querySelector(".obs").classList.toggle("on", b !== "falta");
@@ -773,18 +779,18 @@ function pintarLista(){
 
 /* --------- mensagem --------- */
 function montar(){
-  const grupos = {convidar:[], ativo:[], ex:[], duvida:[]};
-  let feitas = 0;
+  const grupos = {convidar:[], ativo:[], ex:[], duvida:[], parcial:[]};
+  const naoMarcadas = [];
+  let tocadas = 0, fechadas = 0;
   DATA.forEach(r => {
     const s = state[r.id];
     const b = balde(s);
-    if(b === "falta") return;
-    feitas++;
+    if(b === "falta"){ naoMarcadas.push(r.n); return; }
+    tocadas++;
+    if(b !== "parcial") fechadas++;
     let linha = "- " + r.n + " (" + r.d + ")";
-    if(b === "duvida"){
-      const tr = s.treina === "sim" ? "treina sim" : s.treina === "nao" ? "não treina" : "treina?";
-      const nv = s.novo === "sim" ? "conheceu o endereço novo" : s.novo === "nao" ? "não conheceu o endereço novo" : "conheceu o endereço novo?";
-      linha += " [" + tr + " / " + nv + "]";
+    if(b === "duvida" || b === "parcial"){
+      linha += " [" + rotuloTreina(s.treina) + " / " + rotuloNovo(s.novo) + "]";
     }
     if(s.obs && s.obs.trim()) linha += " - " + s.obs.trim();
     grupos[b].push(linha);
@@ -792,23 +798,32 @@ function montar(){
   let texto = "Black Tiger — avaliações do Google";
   const autor = (autorEl.value || "").trim();
   if(autor) texto += " (respondido por " + autor + ")";
-  texto += "\n" + feitas + " de " + DATA.length + " marcadas";
-  ["convidar","ativo","ex","duvida"].forEach(k => {
+  texto += fechadas === DATA.length
+    ? "\n" + DATA.length + " de " + DATA.length + " respondidas"
+    : "\nPARCIAL — " + fechadas + " de " + DATA.length + " fechadas"
+      + (grupos.parcial.length ? " + " + grupos.parcial.length + " pela metade" : "");
+  ["convidar","ativo","ex","duvida","parcial"].forEach(k => {
     if(!grupos[k].length) return;
     texto += "\n\n" + NOME_BALDE[k] + " (" + grupos[k].length + "):\n" + grupos[k].join("\n");
   });
-  return {texto, feitas};
+  if(naoMarcadas.length){
+    texto += "\n\nAINDA NÃO MARCADAS (" + naoMarcadas.length + "):\n" + naoMarcadas.join(", ");
+  }
+  return {texto, tocadas, fechadas};
 }
 
 function atualizar(){
-  const {texto, feitas} = montar();
-  const falta = DATA.length - feitas;
-  document.getElementById("prog").innerHTML = falta > 0
-    ? "Faltam <b>" + falta + "</b> de <b>" + DATA.length + "</b> pessoas"
-    : "Pronto! As <b>" + DATA.length + "</b> pessoas foram marcadas";
+  const {texto, tocadas, fechadas} = montar();
+  const falta = DATA.length - fechadas;
+  document.getElementById("prog").innerHTML = tocadas === 0
+    ? "Marque pelo menos uma pessoa pra liberar o envio"
+    : falta > 0
+      ? "Faltam <b>" + falta + "</b> de <b>" + DATA.length + "</b> &mdash; pode mandar o que já marcou"
+      : "Pronto! As <b>" + DATA.length + "</b> pessoas foram marcadas";
   const wa = document.getElementById("btn-wa");
   const cp = document.getElementById("btn-cp");
-  if(feitas > 0){
+  wa.textContent = fechadas === DATA.length ? "Enviar pro WhatsApp" : "Enviar o que já marquei";
+  if(tocadas > 0){
     wa.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(texto);
     wa.classList.remove("off"); cp.classList.remove("off");
   } else {
