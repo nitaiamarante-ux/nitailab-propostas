@@ -1771,11 +1771,46 @@
 <script>
 (function(){
   const urlParams = new URLSearchParams(window.location.search);
+
+  // ── Modo dono: navegador marcado (via página eu-*.html) não conta visita ──
+  if (localStorage.getItem("nl_owner") === "1") {
+    const showBadge = () => {
+      const badge = document.createElement("div");
+      badge.textContent = "modo Nitai — esta visita não conta";
+      badge.setAttribute("data-nl-owner-badge", "1");
+      badge.style.cssText = "position:fixed;bottom:6px;right:6px;z-index:9999;"
+        + "background:rgba(0,0,0,.55);color:#ccc;font:10px/1.4 sans-serif;"
+        + "padding:3px 8px;border-radius:4px;pointer-events:none;";
+      document.body.appendChild(badge);
+    };
+    const style = document.createElement("style");
+    style.textContent = "@media print{[data-nl-owner-badge]{display:none!important}}";
+    document.head.appendChild(style);
+    if (document.body) showBadge();
+    else document.addEventListener("DOMContentLoaded", showBadge);
+    return; // NÃO chama o endpoint — nenhum evento sai deste navegador
+  }
+
+  // vid — id de aparelho permanente (gera 1x, nunca expira)
+  let vid = localStorage.getItem("nl_vid");
+  if (!vid) {
+    vid = Math.random().toString(36).slice(2, 11) + Date.now().toString(36);
+    localStorage.setItem("nl_vid", vid);
+  }
+
+  // who — rótulo da pessoa via ?p=<rotulo> (persiste pra visitas diretas depois)
+  const pRaw = (urlParams.get("p") || "").toLowerCase();
+  if (/^[a-z0-9_-]{1,20}$/.test(pRaw)) localStorage.setItem("nl_who", pRaw);
+  const who = localStorage.getItem("nl_who") || "";
+
   const CFG = {
     endpoint: "https://nl-tracker.nitai-amarante.workers.dev/track",
     prospect: "q0n0",
+    nome: "Virtut | Loja Moda Feminina",
     ref: "NL-2026-8993",
     source: urlParams.get("src") || "direct",   // qr / wa / em / direct
+    vid: vid,
+    who: who,
     loadedAt: Date.now(),
   };
   if (!CFG.endpoint || CFG.endpoint.indexOf("{{") === 0) {
@@ -1820,12 +1855,14 @@
       prospect: CFG.prospect,
       ref: CFG.ref,
       sid: sid,
+      vid: CFG.vid,
       source: CFG.source,
       type: type,
       t: Date.now(),
       t_rel: Date.now() - CFG.loadedAt,
       scroll_y: window.scrollY,
       scroll_pct: Math.round((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100),
+      ...(CFG.who ? {who: CFG.who} : {}),
       ...data,
     };
     EVENTS_BUF.push(ev);
@@ -1858,6 +1895,7 @@
     vw: window.innerWidth,
     vh: window.innerHeight,
     referrer: document.referrer,
+    nome: CFG.nome,
   });
 
   // ── 2. scroll depth (tracking por % atingida)
@@ -1887,7 +1925,11 @@
           dwell_ms: Date.now() - lastSectionEnter,
         });
       }
-      push("section_enter", {section: currentId, label: currentText});
+      push("section_enter", {
+        section: currentId,
+        label: currentText,
+        sec_title: (currentText || "").replace(/^\d+\.\s*/, ""),
+      });
       lastSectionId = currentId;
       lastSectionEnter = Date.now();
     }
