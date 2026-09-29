@@ -367,7 +367,11 @@ async function sincronizarEstadoServidor(){
     if(!r.ok) return;
     const j = await r.json();
     if(j && Array.isArray(j.respondidas)) j.respondidas.forEach(marcarRespondida);
-    if(j && j.enviado_em) estado.enviadoEm = j.enviado_em;
+    // token único por cliente: rodada nova reaproveita o token, então o servidor devolve respostas e envio da rodada ANTERIOR.
+    // Só vale como "já mandou" se o servidor tem resposta de alguma chave DESTA página.
+    const chavesDaPagina = CFG.perguntas.map(function(p){ return p.chave || p.id; });
+    const temDestaPagina = j && Array.isArray(j.respondidas) && j.respondidas.some(function(c){ return chavesDaPagina.indexOf(c) !== -1; });
+    if(j && j.enviado_em && temDestaPagina) estado.enviadoEm = j.enviado_em;
     salvarEstado();
     render();
   }catch(e){ /* offline: segue com o que já tem local */ }
@@ -855,7 +859,8 @@ function telaFinal(){
   const total = CFG.perguntas.length;
   const probs = blocoProblemas();
   const chavesProb = itensComProblema().map(function(i){ return i.chave; });
-  const feitas = estado.respondidas.filter(function(c){ return chavesProb.indexOf(c) === -1; }).length;
+  const chavesPagina = CFG.perguntas.map(function(p){ return p.chave || p.id; });
+  const feitas = estado.respondidas.filter(function(c){ return chavesProb.indexOf(c) === -1 && chavesPagina.indexOf(c) !== -1; }).length;
   if(estado.envioOk){
     if(probs){
       // nunca dizer "tudo certo" com item faltando
